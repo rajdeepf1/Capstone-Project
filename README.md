@@ -1,6 +1,6 @@
 # Pizza Singh <img src="https://uxwing.com/wp-content/themes/uxwing/download/food-and-drinks/pizza-icon.png" alt="drawing" width="28"/>
 
-Singh's Pizza is a regional pizza maker located in the suburbs of a metropolitan city like New Delhi. Singh's Pizza strives to serve healthy, speciality pizzas and side dishes. We offer a wide spectrum of competitive pricing. We target customers like commuters and workers who lack the time or ability to prepare a meal.
+Singh's Pizza is a regional pizza maker located in the suburbs of a metropolitan city like Toronto. Singh's Pizza strives to serve healthy, speciality pizzas and side dishes. We offer a wide spectrum of competitive pricing. We target customers like commuters and workers who lack the time or ability to prepare a meal.
 
 # Team (Cross section group 2)
 
@@ -57,12 +57,12 @@ The technical specifications of the project. For example:
 - Does the app require "content creation"?
  
    ```
-   No
+   Yes
    ```
 
 - Does the app require internet connection to work?
   ```
-  yes
+  Yes, we will check internet connection on every api calls
   ```
 
 # Out of Scope
