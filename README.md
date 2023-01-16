@@ -1,4 +1,4 @@
-# Pizza Singh
+# Pizza Singh <img src="https://uxwing.com/wp-content/themes/uxwing/download/food-and-drinks/pizza-icon.png" alt="drawing" width="28"/>
 
 Singh's Pizza is a regional pizza maker located in the suburbs of a metropolitan city like New Delhi. Singh's Pizza strives to serve healthy, speciality pizzas and side dishes. We offer a wide spectrum of competitive pricing. We target customers like commuters and workers who lack the time or ability to prepare a meal.
 
