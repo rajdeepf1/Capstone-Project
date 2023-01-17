@@ -21,7 +21,7 @@ Singh's Pizza is a regional pizza maker located in the suburbs of a metropolitan
 - Product Screen
 - Add to Cart functionality
 - Cart Screen
-- Order Screen
+- My Orders Screen (History)
 - Setting Screen
 - Notifications after placing the order
 - About Screen
