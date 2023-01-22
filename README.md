@@ -2,7 +2,7 @@
 
 Singh's Pizza is a regional pizza maker located in the suburbs of a metropolitan city like Toronto. Singh's Pizza strives to serve healthy, speciality pizzas and side dishes. We offer a wide spectrum of competitive pricing. We target customers like commuters and workers who lack the time or ability to prepare a meal.
 
-# Team (Cross section group 2)
+# Team (Group 77 (CS))
 
 - Rajdeep Singh
 - Raman Singh
@@ -70,7 +70,11 @@ The technical specifications of the project. For example:
 What are the limitations of this project?
 - Is there a limit to the number of users?
   ```
-  No limitations
+  Yes, there will be the limitations as we are using the **spark plan** of the firebase in which we can have only 100 active users at once, only 10GB data to be transferred within one month and store only 1 GB of your data.
+  
+  For more details:
+  [Firebase Auth Limits]:https://firebase.google.com/docs/auth/limits
+  [Firebase Pricing]:https://firebase.google.com/pricing/
   ```
 - Is there a focus on a particular city, area, or country?
   ```
