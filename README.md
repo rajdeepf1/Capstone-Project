@@ -28,7 +28,8 @@ Singh's Pizza is a regional pizza maker located in the in London, ON. Singh's Pi
 - ContactUs Screen
 - My Favorite Screen
 - Feedback Screen
-- User role specific feature (Show special deals for premium users)
+- User role (owner/buyer)
+- Owner's Home Screen
 
 # Specs
 
