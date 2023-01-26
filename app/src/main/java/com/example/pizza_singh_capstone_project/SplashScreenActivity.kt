@@ -15,5 +15,6 @@ class SplashScreenActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(SplashScreenActivity@this,MainActivity::class.java))
         }, Constant.setTimeOutDuration)
+
     }
 }
