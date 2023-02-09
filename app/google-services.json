@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "798700405500",
+    "project_id": "pizza-singh-app",
+    "storage_bucket": "pizza-singh-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798700405500:android:5bcdf93d877e6000010d79",
+        "android_client_info": {
+          "package_name": "com.example.pizza_singh_capstone_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "798700405500-c8hfoccllrdjihb28mmimr4rb3erlap9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0TIh1J8VBoJKdcwQnRW1SdmILaVMdsNk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "798700405500-c8hfoccllrdjihb28mmimr4rb3erlap9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
