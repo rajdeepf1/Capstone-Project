@@ -1,13 +1,285 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="signUpFragmentViewModel"
+            type="com.example.pizza_singh_capstone_project.viewmodels.SignUpFragmentViewModel" />
+
+    </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.SignUpFragment"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    >
+        tools:context=".fragments.SignUpFragment">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/purple_700"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            tools:context="com.appsnipp.modernlogin.RegisterActivity">
 
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/viewParent.headerText.NoMode"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:text="@string/sign_up_heading"
+                            android:textColor="@android:color/white" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/ic_pizza_blob" />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/view2"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerInParent="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginEnd="20dp"
+                            android:elevation="12dp"
+                            android:innerRadius="0dp"
+                            android:shape="ring"
+                            android:thicknessRatio="1.9"
+                            app:cardCornerRadius="40dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/play_store_512" />
+                        </androidx.cardview.widget.CardView>
+
+                    </RelativeLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/textInputName"
+                                style="@style/parent"
+                                android:layout_marginTop="@dimen/loginViewsMargin">
+
+                                <EditText
+                                    android:id="@+id/editTextName"
+                                    style="@style/modifiedEditText"
+                                    android:hint="@string/name"
+                                    android:inputType="textPersonName"
+                                    android:maxLines="1"
+                                    android:text="@={signUpFragmentViewModel.editTextNameData}"
+                                    />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/textInputEmail"
+                                style="@style/parent"
+                                android:layout_marginTop="@dimen/loginViewsMargin">
+
+                                <EditText
+                                    android:id="@+id/editTextEmail"
+                                    style="@style/modifiedEditText"
+                                    android:hint="@string/email_hint"
+                                    android:inputType="textEmailAddress"
+                                    android:maxLines="1"
+                                    android:text="@={signUpFragmentViewModel.editTextEmailData}"
+                                    />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/textInputMobile"
+                                style="@style/parent"
+                                android:layout_marginTop="@dimen/loginViewsMargin">
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/editTextMobile"-->
+<!--                                    style="@style/modifiedEditText"-->
+<!--                                    android:hint="@string/mobile_number"-->
+<!--                                    android:inputType="phone"-->
+<!--                                    android:maxLength="10"-->
+<!--                                    android:maxLines="1"-->
+<!--                                    android:text="@={signUpFragmentViewModel.editTextPhoneNumberData}"-->
+<!--                                    />-->
+
+                                <EditText
+                                    android:id="@+id/editTextMobile"
+                                    style="@style/modifiedEditText"
+                                    android:hint="@string/mobile_number"
+                                    android:inputType="phone"
+                                    android:maxLength="10"
+                                    android:maxLines="1"
+                                    android:text="@={signUpFragmentViewModel.editTextPhoneNumberData}"
+                                    />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/textInputAddress"
+                                style="@style/parent"
+                                android:layout_marginTop="@dimen/loginViewsMargin"
+                                >
+
+                                <EditText
+                                    android:id="@+id/editTextAddress"
+                                    style="@style/modifiedEditText"
+                                    android:hint="@string/address"
+                                    android:inputType="textPostalAddress"
+                                    android:maxLines="1"
+                                    android:text="@={signUpFragmentViewModel.editTextAddressData}"
+                                    />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/textInputPassword"
+                                style="@style/parent"
+                                app:passwordToggleEnabled="true"
+                                android:layout_marginTop="@dimen/loginViewsMargin">
+
+                                <EditText
+                                    android:id="@+id/editTextPassword"
+                                    style="@style/modifiedEditText"
+                                    android:hint="@string/password_hint"
+                                    android:inputType="textPassword"
+                                    android:maxLines="1"
+                                    android:text="@={signUpFragmentViewModel.editTextPasswordData}"
+                                    />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:paddingVertical="10dp"
+                                >
+
+                                <com.google.android.material.radiobutton.MaterialRadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="10dp"
+                                    android:text="User"
+                                    android:textColor="@color/contentTextColor"
+                                    android:checked="true"
+                                    android:id="@+id/radioUser"
+                                    android:onClick="@{signUpFragmentViewModel.onRadioButtonClicked}"/>
+                                />
+
+                                <com.google.android.material.radiobutton.MaterialRadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:text="Owner"
+                                    android:textColor="@color/contentTextColor"
+                                    android:id="@+id/radioOwner"
+                                    android:onClick="@{signUpFragmentViewModel.onRadioButtonClicked}"/>
+                                />
+                            </RadioGroup>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/textOwner"
+                                style="@style/parent"
+                                android:layout_marginTop="@dimen/loginViewsMargin"
+                                >
+
+                                <EditText
+                                    android:id="@+id/editTextOwner"
+                                    style="@style/modifiedEditText"
+                                    android:hint="Owner ID"
+                                    android:inputType="textPersonName"
+                                    android:maxLines="1"
+                                    android:visibility="@{signUpFragmentViewModel.isVisible}"
+                                    android:text="@={signUpFragmentViewModel.editTextOwnerData}"
+                                    />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="20dp"
+                                android:background="@drawable/rounded_corner"
+                                android:onClick="@{signUpFragmentViewModel::onSignUpButtonClick}"
+                                android:text="SignUp"
+                                android:textColor="@android:color/white"
+
+                                />
+
+                            <TextView
+                                style="@style/parent"
+                                android:layout_marginTop="@dimen/loginViewsMargin"
+                                android:onClick="@{signUpFragmentViewModel::onBackClicked}"
+                                android:text="@string/already_have_an_account"
+                                android:textAlignment="center"
+                                android:textColor="@color/themeColor"
+                                android:textSize="17sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </ScrollView>
+
+            <View
+                android:layout_width="11dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ic_side_bg" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="11dp"
+                android:layout_marginBottom="30dp"
+                android:adjustViewBounds="false"
+                android:onClick="@{signUpFragmentViewModel::onBackClicked}"
+                android:src="@drawable/ic_back_img" />
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_gravity="center"
+            />
     </FrameLayout>
+
+</layout>

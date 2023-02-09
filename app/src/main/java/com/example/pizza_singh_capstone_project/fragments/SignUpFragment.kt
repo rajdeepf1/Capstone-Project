@@ -5,11 +5,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.pizza_singh_capstone_project.databinding.FragmentSignUpBinding
+import com.example.pizza_singh_capstone_project.factories.SignupFactory
+import com.example.pizza_singh_capstone_project.interfaces.FireStoreResponseCallback
+import com.example.pizza_singh_capstone_project.repositories.LoginSignUpRepository
+import com.example.pizza_singh_capstone_project.utils.Constant
 import com.example.pizza_singh_capstone_project.utils.hide
 import com.example.pizza_singh_capstone_project.utils.show
+import com.example.pizza_singh_capstone_project.viewmodels.SignUpFragmentViewModel
 
 class SignUpFragment : Fragment(), FireStoreResponseCallback {
 

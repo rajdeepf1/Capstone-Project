@@ -1,16 +1,24 @@
 package com.example.pizza_singh_capstone_project.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.pizza_singh_capstone_project.R
 import com.example.pizza_singh_capstone_project.databinding.FragmentLoginBinding
+import com.example.pizza_singh_capstone_project.factories.LoginFactory
+import com.example.pizza_singh_capstone_project.interfaces.BaseResponse
+import com.example.pizza_singh_capstone_project.interfaces.FireStoreResponseCallback
+import com.example.pizza_singh_capstone_project.models.LoginSignupModel
+import com.example.pizza_singh_capstone_project.repositories.LoginSignUpRepository
 import com.example.pizza_singh_capstone_project.utils.*
+import com.example.pizza_singh_capstone_project.viewmodels.LoginFragmentViewModel
 
 class LoginFragment : Fragment() {
 
