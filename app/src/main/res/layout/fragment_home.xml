@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="homeFragmentViewModel"
+            type="com.example.pizza_singh_capstone_project.viewmodels.HomeFragmentViewModel" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.HomeFragment">
+
+        <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+            android:id="@+id/carousel"
+            android:layout_width="match_parent"
+            android:layout_height="256dp"
+            app:showTopShadow="false"
+            app:showBottomShadow="false"
+            app:showCaption="false"
+            app:imageScaleType="centerCrop"
+            app:carouselBackground="#00000000"
+            app:imagePlaceholder="@drawable/carousel_default_placeholder"
+            app:showNavigationButtons="false"
+            app:scaleOnScroll="false"
+            app:scalingFactor="0.15"
+            app:autoWidthFixing="true"
+            app:autoPlay="false"
+            app:autoPlayDelay="3000"
+            app:infiniteCarousel="true"
+            app:touchToPause="true"
+            />
+
+    </RelativeLayout>
+</layout>
