@@ -32,6 +32,8 @@ class ProductListActivity : AppCompatActivity() {
         binding = ActivityProductListBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
+
 
         val category_name: String= getIntent().getStringExtra("category_name").toString()
         val category_id: String= getIntent().getStringExtra("category_id").toString()
@@ -81,4 +83,10 @@ class ProductListActivity : AppCompatActivity() {
         })
 
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
 }
