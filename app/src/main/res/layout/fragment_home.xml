@@ -1,45 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="homeFragmentViewModel"
             type="com.example.pizza_singh_capstone_project.viewmodels.HomeFragmentViewModel" />
 
     </data>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".fragments.HomeFragment">
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:nestedScrollingEnabled="false">-->
 
-        <org.imaginativeworld.whynotimagecarousel.ImageCarousel
-            android:id="@+id/carousel"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="156dp"
-            app:showTopShadow="false"
-            app:showBottomShadow="false"
-            app:showCaption="false"
-            app:imageScaleType="fitXY"
-            app:imagePlaceholder="@drawable/carousel_default_placeholder"
-            app:showNavigationButtons="false"
-            app:scaleOnScroll="true"
-            app:scalingFactor="0.15"
-            app:autoWidthFixing="true"
-            app:autoPlay="true"
-            app:autoPlayDelay="3000"
-            app:infiniteCarousel="true"
-            app:touchToPause="true"
-            app:carouselType="SHOWCASE"
-            app:carouselGravity="CENTER"
-            app:carouselPadding="0dp"
-            app:carouselPaddingBottom="0dp"
-            app:carouselPaddingEnd="0dp"
-            app:carouselPaddingStart="0dp"
-            app:carouselPaddingTop="0dp"
-            />
+            android:layout_height="match_parent"
+            tools:context=".fragments.HomeFragment">
 
-    </RelativeLayout>
+            <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                android:id="@+id/carousel"
+                android:layout_width="match_parent"
+                android:layout_height="156dp"
+                app:autoPlay="true"
+                app:autoPlayDelay="3000"
+                app:autoWidthFixing="true"
+                app:carouselGravity="CENTER"
+                app:carouselPadding="0dp"
+                app:carouselPaddingBottom="0dp"
+                app:carouselPaddingEnd="0dp"
+                app:carouselPaddingStart="0dp"
+                app:carouselPaddingTop="0dp"
+                app:carouselType="SHOWCASE"
+                app:imagePlaceholder="@drawable/carousel_default_placeholder"
+                app:imageScaleType="fitXY"
+                app:infiniteCarousel="true"
+                app:scaleOnScroll="true"
+                app:scalingFactor="0.15"
+                app:showBottomShadow="false"
+                app:showCaption="false"
+                app:showNavigationButtons="false"
+                app:showTopShadow="false"
+                app:touchToPause="true" />
+
+            <TextView
+                android:id="@+id/shopByCat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/carousel"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="cursive"
+                android:text="Shop By Category"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <GridView
+                android:id="@+id/gridView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/shopByCat"
+                android:numColumns="2"
+                android:paddingHorizontal="8dp"
+                android:scrollbars="none"
+                />
+
+        </RelativeLayout>
+<!--    </ScrollView>-->
 </layout>

@@ -1,5 +1,6 @@
 package com.example.pizza_singh_capstone_project.viewmodels
 
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,18 +26,31 @@ class LoginFragmentViewModel(val loginSignUpRepository: LoginSignUpRepository) :
         } else if (passwordTextField.value.isNullOrBlank()) {
             Constant.showToast(view.context, "Please fill the password!")
         } else {
-            userResponse.value = NetworkResult.Loading()
             Coroutines.main {
+//                userResponse.value = NetworkResult.Loading()
+//                val data = loginSignUpRepository.getUserData(
+//                    loginTextField.value.toString(),
+//                    passwordTextField.value.toString()
+//                )
+//                if (data != null){
+//                    userResponse.value = NetworkResult.Success(data)
+//                    NetworkResult.Success(userResponse.value)
+//                }else{
+//                    NetworkResult.Error("Login Failed!",null)
+//                }
+
+                userResponse.value = NetworkResult.Loading()
                 val data = loginSignUpRepository.getUserData(
                     loginTextField.value.toString(),
                     passwordTextField.value.toString()
                 )
                 if (data != null){
-                    userResponse.value = NetworkResult.Success(data)
+                    userResponse.value = data as NetworkResult<LoginSignupModel>
                     NetworkResult.Success(userResponse.value)
                 }else{
-                    NetworkResult.Error("Login Failed!")
+                    userResponse.value = NetworkResult.Error("Login Failed!",null)
                 }
+
             }
         }
     }

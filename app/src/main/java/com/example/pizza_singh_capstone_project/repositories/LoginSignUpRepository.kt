@@ -1,6 +1,7 @@
 package com.example.pizza_singh_capstone_project.repositories
 
 import android.util.Log
+import com.example.pizza_singh_capstone_project.interfaces.NetworkResult
 import com.example.pizza_singh_capstone_project.models.LoginSignupModel
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnFailureListener
@@ -23,21 +24,27 @@ class LoginSignUpRepository {
         return resp
     }
 
-    suspend fun getUserData(email: String, password: String) : LoginSignupModel? {
-        var userResponse:LoginSignupModel? = null
+    suspend fun getUserData(email: String, password: String) : NetworkResult<LoginSignupModel>? {
+        var userResponse:NetworkResult<LoginSignupModel>? = null
         firestore.collection("User")
             .whereEqualTo("email", "${email}")
             .whereEqualTo("password", "${password}")
             .get()
-            .addOnCompleteListener(OnCompleteListener {
-                if (it.isSuccessful){
-                    userResponse = it.result.toObjects(LoginSignupModel::class.java).get(0)
-                }else{
-                    userResponse = null
+            .addOnCompleteListener {
+                if (it.isSuccessful ) {
+                    if (it.result.size() > 0){
+                        //userResponse = it.result?.toObjects(LoginSignupModel::class.java)?.get(0)
+                        userResponse = it.result?.toObjects(LoginSignupModel::class.java)?.get(0)
+                            ?.let { it1 -> NetworkResult.Success(it1) }!!
+                    }else{
+                        userResponse = NetworkResult.Error("Login Failed!")
+                    }
+                } else {
+                    userResponse = NetworkResult.Error("Login Failed!")
                 }
-            }).addOnFailureListener(OnFailureListener {
+            }.addOnFailureListener(OnFailureListener {
                 Log.d(TAG, "getUserData: login failure")
-                userResponse = null
+                userResponse = NetworkResult.Error("Login Failed!")
             }).await()
 
         return userResponse

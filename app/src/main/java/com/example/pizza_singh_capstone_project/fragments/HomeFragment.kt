@@ -1,13 +1,17 @@
 package com.example.pizza_singh_capstone_project.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.pizza_singh_capstone_project.activities.ProductListActivity
+import com.example.pizza_singh_capstone_project.adapters.HomeGridAdapter
 import com.example.pizza_singh_capstone_project.databinding.FragmentHomeBinding
 import com.example.pizza_singh_capstone_project.factories.HomeFactory
 import com.example.pizza_singh_capstone_project.interfaces.NetworkResult
@@ -54,6 +58,7 @@ class HomeFragment : Fragment() {
             when (it) {
                 is NetworkResult.Loading -> {
                     //binding.progressBar.show()
+
                 }
 
                 is NetworkResult.Success -> {
@@ -66,8 +71,6 @@ class HomeFragment : Fragment() {
                     }
 
                     binding.carousel.setData(list)
-
-
                 }
 
                 is NetworkResult.Error -> {
@@ -82,6 +85,42 @@ class HomeFragment : Fragment() {
         })
 
 
+
+        viewModel.getCategories()
+
+        viewModel.categoriesList.observe(viewLifecycleOwner, Observer {
+
+            when (it) {
+                is NetworkResult.Loading -> {
+                    //binding.progressBar.show()
+                }
+
+                is NetworkResult.Success -> {
+                    val obj = it.data!!
+                    Log.d(TAG, "onCreateViewCategoriesList: ${obj}")
+
+                    val homeGridAdapter = HomeGridAdapter(requireContext(),obj)
+                    binding.gridView.adapter = homeGridAdapter
+                    binding.gridView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
+                        startActivity(Intent(requireContext(),ProductListActivity::class.java)
+                            .putExtra("category_name",obj.get(position).categoryName)
+                            .putExtra("category_id",obj.get(position).id)
+                        )
+
+                    }
+
+                }
+
+                is NetworkResult.Error -> {
+                    //binding.progressBar.hide()
+                    Constant.showToast(requireContext(),it.message.toString())
+                }
+                else -> {
+                    //binding.progressBar.hide()
+                }
+            }
+
+        })
 
         return view
     }

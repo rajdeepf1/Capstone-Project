@@ -43,34 +43,40 @@ class LoginFragment : Fragment() {
         binding.lifecycleOwner = this
 
         viewModel.userResponse.observe(viewLifecycleOwner, Observer {
-
+            Log.d(TAG, "onCreateView: ${it.data}")
+//            if (it.data == null){
+//                binding.progressBar.hide()
+//                return@Observer
+//            }
             when (it) {
                 is NetworkResult.Loading -> {
                     binding.progressBar.show()
                 }
 
                 is NetworkResult.Success -> {
-                    val obj = it.data!!
-
-                    Coroutines.main {
-                        SharedPref.saveUserObject(
-                            requireContext(),
-                            LoginSignupModel(
-                                obj.name,
-                                obj.email,
-                                obj.phoneNumber,
-                                obj.address,
-                                obj.password,
-                                obj.isOwner
+                        val obj = it.data!!
+                        Coroutines.main {
+                            SharedPref.saveUserObject(
+                                requireContext(),
+                                LoginSignupModel(
+                                    obj.userId,
+                                    obj.name,
+                                    obj.email,
+                                    obj.phoneNumber,
+                                    obj.address,
+                                    obj.password,
+                                    obj.isOwner
+                                )
                             )
-                        )
-                    }
+                        }
 
-                    Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment)
+                        Navigation.findNavController(view)
+                            .navigate(R.id.action_loginFragment_to_homeFragment)
 
                 }
 
                 is NetworkResult.Error -> {
+                    Log.d(TAG, "onCreateView: errorrrrr")
                     binding.progressBar.hide()
                     Constant.showToast(requireContext(),it.message.toString())
                 }
