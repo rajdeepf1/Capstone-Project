@@ -79,6 +79,7 @@ class LoginFragment : Fragment() {
                     Log.d(TAG, "onCreateView: errorrrrr")
                     binding.progressBar.hide()
                     Constant.showToast(requireContext(),it.message.toString())
+
                 }
                 else -> {
                     binding.progressBar.hide()

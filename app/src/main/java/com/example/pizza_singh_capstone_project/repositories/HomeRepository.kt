@@ -4,8 +4,6 @@ import android.util.Log
 import com.example.pizza_singh_capstone_project.interfaces.NetworkResult
 import com.example.pizza_singh_capstone_project.models.BannersModel
 import com.example.pizza_singh_capstone_project.models.CategoriesModel
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 
@@ -13,7 +11,6 @@ class HomeRepository {
 
     private val TAG: String? = "HomeRepository"
     val firestore = FirebaseFirestore.getInstance()
-
     suspend fun getBannerImages():ArrayList<BannersModel> {
         var list: ArrayList<BannersModel>? = ArrayList<BannersModel>()
         firestore.collection("BannerImages")

@@ -26,6 +26,7 @@ class LoginSignUpRepository {
 
     suspend fun getUserData(email: String, password: String) : NetworkResult<LoginSignupModel>? {
         var userResponse:NetworkResult<LoginSignupModel>? = null
+
         firestore.collection("User")
             .whereEqualTo("email", "${email}")
             .whereEqualTo("password", "${password}")

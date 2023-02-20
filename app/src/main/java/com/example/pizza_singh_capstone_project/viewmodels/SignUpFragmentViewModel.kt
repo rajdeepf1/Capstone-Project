@@ -68,16 +68,17 @@ class SignUpFragmentViewModel(val loginSignUpRepository: LoginSignUpRepository) 
             loginSignupModel.password = editTextPasswordData.value.toString()
             loginSignupModel.isOwner = isOwner
             loginSignupModel.userId = System.currentTimeMillis()
-
             if (InternetConnectionCheck.isOnline(view.context)) {
                 fireStoreResponseCallback?.onStarted()
                 Coroutines.main {
                     val response: Boolean = loginSignUpRepository.insertData(loginSignupModel)
                     if (response) {
+                        Log.d(TAG, "onSignUpButtonClick: here iffff")
                         fireStoreResponseCallback?.onSuccess(response)
                         onBackClicked(view)
                         return@main
                     } else {
+                        Log.d(TAG, "onSignUpButtonClick: here elseee")
                         fireStoreResponseCallback?.onFailure("Signup Failed")
                     }
                 }
