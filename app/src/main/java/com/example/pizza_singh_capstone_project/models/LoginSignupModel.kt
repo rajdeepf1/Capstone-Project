@@ -1,6 +1,7 @@
 package com.example.pizza_singh_capstone_project.models
 
-data class LoginSignupModel(var name:String = "",
+data class LoginSignupModel(var userId: Long = 0,
+                            var name:String = "",
                             var email:String = "",
                             var phoneNumber: String = "",
                             var address: String = "",
