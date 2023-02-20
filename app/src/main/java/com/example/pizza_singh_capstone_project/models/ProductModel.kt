@@ -5,5 +5,6 @@ data class ProductModel(
     val productImage: String,
     val productName: String,
     val productPrice: String,
-    val productId: String
+    val productId: String,
+    val isVeg: Boolean
 )

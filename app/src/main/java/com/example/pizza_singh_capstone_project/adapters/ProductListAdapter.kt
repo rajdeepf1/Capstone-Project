@@ -37,7 +37,21 @@ class ProductListAdapter(private val list: List<ProductModel>, private val conte
                 Glide.with(holder.itemView.context)
                     .load(productImage)
                     .into(binding.imageView)
-
+                if (isVeg) {
+                    binding.textViewName.setCompoundDrawablesWithIntrinsicBounds(
+                        R.drawable.veg,
+                        0,
+                        0,
+                        0
+                    )
+                }else{
+                    binding.textViewName.setCompoundDrawablesWithIntrinsicBounds(
+                        R.drawable.nonveg,
+                        0,
+                        0,
+                        0
+                    )
+                }
 
                 binding.cardView.setOnClickListener(View.OnClickListener {
                     context.startActivity(
@@ -47,6 +61,7 @@ class ProductListAdapter(private val list: List<ProductModel>, private val conte
                             .putExtra("productId", productId)
                             .putExtra("productPrice", productPrice)
                             .putExtra("productImage", productImage)
+                            .putExtra("isVeg", isVeg)
                             .putStringArrayListExtra("productDescription", productDescription)
                     )
                 })

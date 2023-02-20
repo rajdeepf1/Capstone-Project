@@ -46,13 +46,16 @@ class ProductListRepository(private val category_name: String, private var categ
                     val productImage: String = it.data?.getValue("productImage").toString()
                     val productName: String = it.data?.getValue("productName").toString()
                     val productPrice: String = it.data?.getValue("productPrice").toString()
+                    var isVeg: Boolean = false
+                    isVeg = collectionName!!.equals(Collections.bigVeg)|| collectionName!!.equals(Collections.regularVeg)
                     (list as ArrayList<ProductModel>).add(
                         ProductModel(
                             productId = productId,
                             productDescription = productDescription,
                             productImage = productImage,
                             productName = productName,
-                            productPrice = productPrice
+                            productPrice = productPrice,
+                            isVeg = isVeg
                         )
                     )
                 }
