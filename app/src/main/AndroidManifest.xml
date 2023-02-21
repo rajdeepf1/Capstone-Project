@@ -22,6 +22,12 @@
             android:name=".activities.ProductListActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.ProductDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ProductListActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.SplashScreenActivity"
             android:exported="true"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
