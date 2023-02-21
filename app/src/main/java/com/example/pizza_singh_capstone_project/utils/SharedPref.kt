@@ -43,9 +43,13 @@ class SharedPref {
 
             val gson = Gson()
             val json: String? = sharedPreferences.getString(Constant.sharedPrefUserObjectKey, "")
-            val obj: LoginSignupModel = gson.fromJson(json, LoginSignupModel::class.java)
+            if (!json.isNullOrBlank() && json.length>0) {
+                val obj: LoginSignupModel = gson.fromJson(json, LoginSignupModel::class.java)
 
-            return obj
+                return obj
+            }else{
+                return LoginSignupModel()
+            }
         }
 
     }

@@ -4,6 +4,8 @@
 *.ap_
 *.aab
 
+**/.DS_Store
+
 # Files for the ART/Dalvik VM
 *.dex
 
@@ -83,3 +85,4 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+.DS_Store
