@@ -19,5 +19,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/rv_list" />
 
+    <TextView
+        android:id="@+id/accountScreenText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        android:text="Account Screen Comming Soon..."
+        android:visibility="gone"
+        />
+
 
 </FrameLayout>

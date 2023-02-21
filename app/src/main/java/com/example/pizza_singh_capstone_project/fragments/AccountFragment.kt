@@ -38,10 +38,6 @@ class AccountFragment : Fragment() {
         _binding = FragmentAccountBinding.inflate(inflater, container, false)
         val view = binding.root
 
-//        binding.loginBtn.setOnClickListener {
-//            Navigation.findNavController(view).navigate(R.id.action_accountFragment_to_loginFragment)
-//        }
-
         binding.progressBar.show()
 
         val loginSignupModel: LoginSignupModel = SharedPref.getUserObject(requireContext())
@@ -53,6 +49,9 @@ class AccountFragment : Fragment() {
                 binding.progressBar.hide()
                 Navigation.findNavController(view).navigate(R.id.action_accountFragment_to_loginFragment)
             },2000)
+        }else{
+            binding.progressBar.hide()
+            binding.accountScreenText.visibility = View.VISIBLE
         }
 
         return view

@@ -11,15 +11,17 @@
 
     </data>
 
-<!--    <ScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:nestedScrollingEnabled="false">-->
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        >
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".fragments.HomeFragment">
+            android:layout_height="wrap_content"
+            tools:context=".fragments.HomeFragment"
+            android:orientation="vertical"
+            >
 
             <org.imaginativeworld.whynotimagecarousel.ImageCarousel
                 android:id="@+id/carousel"
@@ -61,13 +63,14 @@
             <GridView
                 android:id="@+id/gridView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="500dp"
                 android:layout_below="@+id/shopByCat"
                 android:numColumns="2"
                 android:paddingHorizontal="8dp"
                 android:scrollbars="none"
+                android:nestedScrollingEnabled="false"
                 />
 
         </RelativeLayout>
-<!--    </ScrollView>-->
+    </ScrollView>
 </layout>

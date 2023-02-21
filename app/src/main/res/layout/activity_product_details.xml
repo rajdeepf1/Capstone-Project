@@ -19,7 +19,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:scrollbars="none"
+            >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -187,14 +189,14 @@
                     android:orientation="vertical"
                     >
 
-                <CheckBox
-                    android:id="@+id/cokeCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Coke"
-                    android:drawableLeft="@drawable/veg"
-                    android:buttonTint="@color/purple_500"
-                    />
+                    <CheckBox
+                        android:id="@+id/cokeCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Coke"
+                        android:drawableLeft="@drawable/veg"
+                        android:buttonTint="@color/purple_500"
+                        />
 
                     <CheckBox
                         android:id="@+id/chocoLavaCakeCheckBox"

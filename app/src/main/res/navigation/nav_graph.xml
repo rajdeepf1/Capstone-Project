@@ -38,4 +38,11 @@
         tools:layout="@layout/fragment_sign_up" >
     </fragment>
 
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.pizza_singh_capstone_project.fragments.CartFragment"
+        android:label="fragment_sixth"
+        tools:layout="@layout/fragment_cart" >
+    </fragment>
+
 </navigation>
