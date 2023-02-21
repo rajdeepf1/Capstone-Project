@@ -142,6 +142,8 @@ class ProductDetailsActivity : AppCompatActivity() {
                     )
                 )
 
+                Constant.showToast(applicationContext,"Items Added To Cart!")
+
 
             }else{
                 startActivity(Intent(this,MainActivity::class.java).putExtra("isCommingFromDifferentScreen",true))
