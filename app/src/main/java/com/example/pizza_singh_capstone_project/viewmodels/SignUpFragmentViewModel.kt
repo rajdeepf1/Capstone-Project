@@ -67,7 +67,7 @@ class SignUpFragmentViewModel(val loginSignUpRepository: LoginSignUpRepository) 
             loginSignupModel.address = editTextAddressData.value.toString()
             loginSignupModel.password = editTextPasswordData.value.toString()
             loginSignupModel.isOwner = isOwner
-
+            loginSignupModel.userId = System.currentTimeMillis()
             if (InternetConnectionCheck.isOnline(view.context)) {
                 fireStoreResponseCallback?.onStarted()
                 Coroutines.main {
