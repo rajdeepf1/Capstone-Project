@@ -128,18 +128,17 @@
                         android:id="@+id/radioPanTossed"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:checked="false"
                         android:text="  Pan Tossed - $2.10"
                         android:textSize="16sp"
                         android:drawableLeft="@drawable/veg"
                         android:buttonTint="@color/purple_500"
+                        android:checked="true"
                         />
 
                     <RadioButton
                         android:id="@+id/radioCheeseBlast"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:checked="false"
                         android:text="   Cheese Blast - $2.50"
                         android:textSize="16sp"
                         android:drawableLeft="@drawable/veg"
@@ -150,7 +149,6 @@
                         android:id="@+id/radioThinCrustCheeseBlast"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:checked="false"
                         android:text="   Thin Crust Cheese Blast - $1.80"
                         android:textSize="16sp"
                         android:drawableLeft="@drawable/veg"
@@ -161,7 +159,6 @@
                         android:id="@+id/radioThinCrust"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:checked="false"
                         android:text="   Thin Crust - $1.49"
                         android:textSize="16sp"
                         android:drawableLeft="@drawable/veg"
@@ -298,6 +295,7 @@
                 </LinearLayout>
 
                 <Button
+                    android:id="@+id/addToCartButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@+id/ll_VegToppings"
