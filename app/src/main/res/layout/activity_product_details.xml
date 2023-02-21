@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="8dp"
+        tools:context=".activities.ProductDetailsActivity">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="8dp"
+                tools:context=".activities.FeedDetailsActivity">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/onCardClick"
+                    style="@style/Widget.MaterialComponents.CardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    app:cardCornerRadius="36dp"
+                    app:cardElevation="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:contentDescription="test"
+                        android:scaleType="fitXY"
+                        android:src="@android:drawable/btn_star" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:elevation="2dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/onCardClick">
+
+                    <TextView
+                        android:id="@+id/titleText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:gravity="center_vertical"
+                        android:lines="1"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:text="title"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/priceText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:gravity="end"
+                        android:text="Price"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/descriptionText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@android:string/untitled"
+                    android:textColor="@color/black"
+                    android:textStyle="italic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+                <TextView
+                    android:id="@+id/longDescriptionText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@android:string/untitled"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/descriptionText" />
+
+                <TextView
+                    android:id="@+id/choiceOfCrust"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Choice of crust"
+                    android:textColor="@color/black"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintTop_toBottomOf="@+id/longDescriptionText" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/choiceOfCrust"
+                    android:layout_marginTop="10dp"
+                    >
+
+                    <RadioButton
+                        android:id="@+id/radioPanTossed"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="  Pan Tossed - $2.10"
+                        android:textSize="16sp"
+                        android:drawableLeft="@drawable/veg"
+                        android:buttonTint="@color/purple_500"
+                        android:checked="true"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/radioCheeseBlast"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="   Cheese Blast - $2.50"
+                        android:textSize="16sp"
+                        android:drawableLeft="@drawable/veg"
+                        android:buttonTint="@color/purple_500"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/radioThinCrustCheeseBlast"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="   Thin Crust Cheese Blast - $1.80"
+                        android:textSize="16sp"
+                        android:drawableLeft="@drawable/veg"
+                        android:buttonTint="@color/purple_500"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/radioThinCrust"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="   Thin Crust - $1.49"
+                        android:textSize="16sp"
+                        android:drawableLeft="@drawable/veg"
+                        android:buttonTint="@color/purple_500"
+                        />
+
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/AddDrinkDessert"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Add a Dessert/Drink"
+                    android:textColor="@color/black"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+                <LinearLayout
+                    android:id="@+id/ll_AddDrinkDessert"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/AddDrinkDessert"
+                    android:orientation="vertical"
+                    >
+
+                <CheckBox
+                    android:id="@+id/cokeCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Coke"
+                    android:drawableLeft="@drawable/veg"
+                    android:buttonTint="@color/purple_500"
+                    />
+
+                    <CheckBox
+                        android:id="@+id/chocoLavaCakeCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Choco Lava Cake"
+                        android:drawableLeft="@drawable/veg"
+                        android:buttonTint="@color/purple_500"
+                        />
+
+                    <CheckBox
+                        android:id="@+id/chocolateOverloadBrownieCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chocolate Overload Brownie"
+                        android:drawableLeft="@drawable/nonveg"
+                        android:buttonTint="@color/purple_500"
+                        />
+
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/vegToppings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Veg Toppings"
+                    android:textColor="@color/black"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_AddDrinkDessert" />
+
+
+                <LinearLayout
+                    android:id="@+id/ll_VegToppings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/vegToppings"
+                    android:orientation="vertical"
+                    >
+
+                    <CheckBox
+                        android:id="@+id/paneerCubesCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Paneer Cubes"
+                        android:drawableLeft="@drawable/veg"
+                        android:buttonTint="@color/purple_500"
+                        />
+
+                    <CheckBox
+                        android:id="@+id/mushroomsCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mushrooms"
+                        android:drawableLeft="@drawable/veg"
+                        android:buttonTint="@color/purple_500"
+                        />
+
+                    <CheckBox
+                        android:id="@+id/blackOlivesCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Black Olives"
+                        android:drawableLeft="@drawable/veg"
+                        android:buttonTint="@color/purple_500"
+                        />
+
+                    <CheckBox
+                        android:id="@+id/spicyJalapenosCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Spicy Jalapenos"
+                        android:drawableLeft="@drawable/veg"
+                        android:buttonTint="@color/purple_500"
+                        />
+
+                    <CheckBox
+                        android:id="@+id/redPaprikaCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Red Paprika"
+                        android:drawableLeft="@drawable/veg"
+                        android:buttonTint="@color/purple_500"
+                        />
+
+                    <CheckBox
+                        android:id="@+id/goldenCornCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Golden Corn"
+                        android:drawableLeft="@drawable/veg"
+                        android:buttonTint="@color/purple_500"
+                        />
+
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/addToCartButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_VegToppings"
+                    android:text="Add To Cart"
+                    android:layout_marginVertical="20dp"
+                    />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
