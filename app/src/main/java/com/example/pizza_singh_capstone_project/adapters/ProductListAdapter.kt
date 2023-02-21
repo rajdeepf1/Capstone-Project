@@ -13,7 +13,7 @@ import com.example.pizza_singh_capstone_project.activities.ProductDetailsActivit
 import com.example.pizza_singh_capstone_project.databinding.CustomProductListLayoutBinding
 import com.example.pizza_singh_capstone_project.models.ProductModel
 
-class ProductListAdapter(private val list: List<ProductModel>, private val context: Context) :
+class ProductListAdapter(private var list: List<ProductModel>, private val context: Context) :
     RecyclerView.Adapter<ProductListAdapter.HoursViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HoursViewHolder {
@@ -23,6 +23,16 @@ class ProductListAdapter(private val list: List<ProductModel>, private val conte
     }
 
     override fun getItemCount() = list.size
+
+    // method for filtering our recyclerview items.
+    fun filterList(filterlist: ArrayList<ProductModel>) {
+        // below line is to add our filtered
+        // list in our course array list.
+        list = filterlist
+        // below line is to notify our adapter
+        // as change in recycler view data.
+        notifyDataSetChanged()
+    }
 
     override fun onBindViewHolder(holder: HoursViewHolder, position: Int) {
         with(holder) {
