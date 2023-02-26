@@ -12,8 +12,8 @@ class CartViewModel:ViewModel() {
         CartRepository.insert(context,cartModel)
     }
 
-    fun getAllCartData(context: Context): LiveData<List<CartModel>>
+    fun getAllCartData(context: Context,userId:Long): LiveData<List<CartModel>>
     {
-        return CartRepository.getAllCartData(context)
+        return CartRepository.getAllCartData(context, userId = userId)
     }
 }

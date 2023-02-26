@@ -28,10 +28,10 @@ class CartRepository {
 
         }
 
-        fun getAllCartData(context: Context): LiveData<List<CartModel>>
+        fun getAllCartData(context: Context, userId : Long): LiveData<List<CartModel>>
         {
             appDatabase= intialiseDB(context)
-            return appDatabase!!.cartDao().getAllCartData()
+            return appDatabase!!.cartDao().getAllCartData(userId = userId)
         }
     }
 }

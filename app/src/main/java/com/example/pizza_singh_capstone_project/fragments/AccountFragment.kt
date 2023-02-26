@@ -19,7 +19,7 @@ import kotlin.math.log
 
 class AccountFragment : Fragment() {
 
-    private var _binding: FragmentAccountBinding?  = null
+    private var _binding: FragmentAccountBinding? = null
 
     private val binding get() = _binding!!
 
@@ -42,16 +42,41 @@ class AccountFragment : Fragment() {
 
         val loginSignupModel: LoginSignupModel = SharedPref.getUserObject(requireContext())
         val userId: Long = loginSignupModel.userId
+        val userName: String = loginSignupModel.name
 
-        if (userId == 0L){
+        if (userId == 0L) {
             Log.d(TAG, "onCreateView: ${loginSignupModel}")
+            binding.flAccount.visibility = View.GONE
             Handler().postDelayed(Runnable {
                 binding.progressBar.hide()
-                Navigation.findNavController(view).navigate(R.id.action_accountFragment_to_loginFragment)
-            },2000)
-        }else{
+                try {
+                    Navigation.findNavController(view)
+                        .navigate(R.id.action_accountFragment_to_loginFragment)
+                } catch (e: Exception) {
+                    Log.d(TAG, "onCreateView: ${e.message}")
+                }
+            }, 1000)
+        } else {
             binding.progressBar.hide()
-            binding.accountScreenText.visibility = View.VISIBLE
+            try {
+                binding.flAccount.visibility = View.VISIBLE
+                binding.mark.text = userName[0].toString()
+                binding.textView3.text = "${userName},"
+
+                binding.logoutButton.setOnClickListener {
+                    SharedPref.clearSharedPrefObject(requireContext())
+                    try {
+                        Navigation.findNavController(view)
+                            .navigate(R.id.action_accountFragment_to_loginFragment)
+                    } catch (e: Exception) {
+                        Log.d(TAG, "onCreateView: ${e.message}")
+                    }
+                }
+
+            } catch (e: Exception) {
+                Log.d(TAG, "onCreateView: ${e.message}")
+            }
+
         }
 
         return view

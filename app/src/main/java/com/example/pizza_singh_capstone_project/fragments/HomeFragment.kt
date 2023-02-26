@@ -57,8 +57,7 @@ class HomeFragment : Fragment() {
         viewModel.homeBanners.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is NetworkResult.Loading -> {
-                    //binding.progressBar.show()
-
+                    binding.progressBar.show()
                 }
 
                 is NetworkResult.Success -> {
@@ -71,14 +70,16 @@ class HomeFragment : Fragment() {
                     }
 
                     binding.carousel.setData(list)
+                    binding.progressBar.hide()
+
                 }
 
                 is NetworkResult.Error -> {
-                    //binding.progressBar.hide()
+                    binding.progressBar.hide()
                     Constant.showToast(requireContext(),it.message.toString())
                 }
                 else -> {
-                    //binding.progressBar.hide()
+                    binding.progressBar.hide()
                 }
             }
 
