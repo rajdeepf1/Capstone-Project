@@ -55,7 +55,7 @@ class CartFragment : Fragment() {
                     val adapter: CartsListAdapter = CartsListAdapter(it, requireContext())
                     binding.rvList.adapter = adapter
                 })
-        }else{
+        } else {
             binding.textViewNoDataFoundLoginFirst.visibility = View.VISIBLE
         }
 

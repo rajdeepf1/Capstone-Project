@@ -26,7 +26,12 @@ class LoginFragmentViewModel(val loginSignUpRepository: LoginSignUpRepository) :
             Constant.showToast(view.context, "Please enter the valid email-id!")
         } else if (passwordTextField.value.isNullOrBlank()) {
             Constant.showToast(view.context, "Please fill the password!")
-        } else {
+        }else if(!Constant.isValidPassword(passwordTextField.value.toString())){
+            Constant.showToast(
+                view.context,
+                "Password must contain minimum 8 characters at least 1 Alphabet, 1 Number and 1 Special Character"
+            )
+        }else {
             Coroutines.main {
 //                userResponse.value = NetworkResult.Loading()
 //                val data = loginSignUpRepository.getUserData(
@@ -59,5 +64,9 @@ class LoginFragmentViewModel(val loginSignUpRepository: LoginSignUpRepository) :
 
     fun onSignUpButtonClick(view: View): Unit {
         Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_signUpFragment)
+    }
+
+    fun onForgotTextClicked(view: View): Unit {
+        Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_forgotFragment)
     }
 }
