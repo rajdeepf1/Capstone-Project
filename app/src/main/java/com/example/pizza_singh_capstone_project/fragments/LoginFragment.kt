@@ -1,6 +1,8 @@
 package com.example.pizza_singh_capstone_project.fragments
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.pizza_singh_capstone_project.R
+import com.example.pizza_singh_capstone_project.activities.OwnerHomeActivity
 import com.example.pizza_singh_capstone_project.databinding.FragmentLoginBinding
 import com.example.pizza_singh_capstone_project.factories.LoginFactory
 import com.example.pizza_singh_capstone_project.interfaces.NetworkResult
@@ -70,8 +73,24 @@ class LoginFragment : Fragment() {
                             )
                         }
 
-                        Navigation.findNavController(view)
-                            .navigate(R.id.action_loginFragment_to_homeFragment)
+
+                    val handle: Handler = Handler()
+                    handle.postDelayed(Runnable {
+                        val loginSignupModel: LoginSignupModel = SharedPref.getUserObject(requireContext())
+
+                        if (loginSignupModel.isOwner){
+                            startActivity(
+                                Intent(requireContext(), OwnerHomeActivity::class.java)
+                                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                            )
+                        }else{
+                            Navigation.findNavController(view)
+                                .navigate(R.id.action_loginFragment_to_homeFragment)
+                        }
+
+                    },2000)
+
+
 
                 }
 

@@ -9,10 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pizza_singh_capstone_project.R
 import com.example.pizza_singh_capstone_project.adapters.CartsListAdapter
 import com.example.pizza_singh_capstone_project.databinding.FragmentCartBinding
-import com.example.pizza_singh_capstone_project.databinding.FragmentHomeBinding
 import com.example.pizza_singh_capstone_project.models.LoginSignupModel
 import com.example.pizza_singh_capstone_project.utils.SharedPref
 import com.example.pizza_singh_capstone_project.viewmodels.CartViewModel
@@ -52,7 +50,8 @@ class CartFragment : Fragment() {
             binding.textViewNoDataFoundLoginFirst.visibility = View.INVISIBLE
             cartViewModel.getAllCartData(requireContext(), userId = userId)
                 .observe(viewLifecycleOwner, Observer {
-                    val adapter: CartsListAdapter = CartsListAdapter(it, requireContext())
+                    val adapter: CartsListAdapter =
+                        CartsListAdapter(it, requireContext(), binding.orderNowButton,binding.progressBar)
                     binding.rvList.adapter = adapter
                 })
         } else {
@@ -61,5 +60,6 @@ class CartFragment : Fragment() {
 
         return view
     }
+
 
 }

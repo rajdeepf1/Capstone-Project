@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/owner_nav_graph"
+    app:startDestination="@id/ownerHomeFragment"
+    >
+
+    <fragment
+        android:id="@+id/ownerHomeFragment"
+        android:name="com.example.pizza_singh_capstone_project.fragments.OwnerHomeFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_owner_home" />
+
+    <fragment
+        android:id="@+id/ownerAccountFragment"
+        android:name="com.example.pizza_singh_capstone_project.fragments.OwnerAccountFragment"
+        android:label="fragment_second"
+        tools:layout="@layout/fragment_owner_account" />
+
+
+</navigation>

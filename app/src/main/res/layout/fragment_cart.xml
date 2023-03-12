@@ -48,5 +48,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/rv_list" />
 
+        <Button
+            android:id="@+id/orderNowButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Order Now"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/rounded_corner"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

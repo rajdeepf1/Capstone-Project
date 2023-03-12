@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ownerHomeFragment"
+        android:icon="@drawable/baseline_home_24"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/ownerOrderHistoryFragment"
+        android:icon="@drawable/order_now"
+        android:title="Orders History" />
+    <item
+        android:id="@+id/ownerAccountFragment"
+        android:icon="@drawable/baseline_account_circle_24"
+        android:title="@string/account" />
+</menu>
