@@ -112,15 +112,6 @@ class CartsListAdapter(
                 orderButton.setOnClickListener {
                     Log.d(TAG, "onBindViewHolder: ${list}")
 
-//                    list.map {
-//                        try {
-//                            var prodPrice: Double = it.productPrice.toDouble()
-//                            Log.d(
-//                                TAG, "onBindViewHolder: ${ String.format("%.2f", prodPrice * it.qyt) }")
-//                        } catch (e: Exception) {
-//                            Log.d(TAG, "onBindViewHolder: ${e.message}")
-//                        }
-//                    }
                     progressBar.visibility = View.VISIBLE
 
                     Handler().postDelayed(Runnable {

@@ -6,7 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.pizza_singh_capstone_project.R
+import com.example.pizza_singh_capstone_project.adapters.CartsListAdapter
+import com.example.pizza_singh_capstone_project.adapters.OrderListAdapter
 import com.example.pizza_singh_capstone_project.databinding.FragmentCartBinding
 import com.example.pizza_singh_capstone_project.databinding.FragmentOrderBottomSheetDialogBinding
 import com.example.pizza_singh_capstone_project.models.CartModel
@@ -35,16 +39,15 @@ class OrderBottomSheetDialogFragment(list: List<CartModel>) : BottomSheetDialogF
         _binding = FragmentOrderBottomSheetDialogBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        list?.map {
-            try {
-                var prodPrice: Double = it.productPrice.toDouble()
-                Log.d(
-                    TAG, "onBindViewHolder: ${String.format("%.2f", prodPrice * it.qyt)}"
-                )
-            } catch (e: Exception) {
-                Log.d(TAG, "onBindViewHolder: ${e.message}")
-            }
-        }
+        // create  layoutManager
+        val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(requireContext())
+
+        // pass it to rvLists layoutManager
+        binding.rvList.setLayoutManager(layoutManager)
+
+        val adapter: OrderListAdapter =
+            OrderListAdapter(list!!, requireContext())
+        binding.rvList.adapter = adapter
 
         return view
 

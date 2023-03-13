@@ -18,59 +18,93 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:paddingHorizontal="16dp"
-        android:paddingBottom="20dp"
+        android:paddingHorizontal="8dp"
         >
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:elevation="10dp"
-            app:cardCornerRadius="8dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp" />
-        </androidx.cardview.widget.CardView>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:layout_width="0dp"
+            android:id="@+id/tvSubTotalHeading"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name"
-            app:layout_constraintBottom_toBottomOf="@+id/cardView3"
-            app:layout_constraintStart_toEndOf="@+id/cardView3"
-            app:layout_constraintTop_toTopOf="@+id/cardView3"
-            android:layout_marginStart="10dp"
+            android:text="---------- Sub Total ----------"
+            app:layout_constraintTop_toBottomOf="@+id/rv_list"
+            tools:layout_editor_absoluteX="8dp"
+            android:textColor="@android:color/black"
+            android:gravity="center_horizontal"
             />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView4"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tvSubTotal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:elevation="10dp"
-            app:cardCornerRadius="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView3"
-            >
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp" />
-        </androidx.cardview.widget.CardView>
+            android:text="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubTotalHeading"
+            tools:layout_editor_absoluteX="8dp"
+            android:textColor="@android:color/black"
+            android:gravity="center_horizontal"
+            />
 
         <TextView
-            android:layout_width="0dp"
+            android:id="@+id/hstHeading"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name"
-            app:layout_constraintBottom_toBottomOf="@+id/cardView4"
-            app:layout_constraintStart_toEndOf="@+id/cardView4"
-            app:layout_constraintTop_toTopOf="@+id/cardView4"
-            android:layout_marginStart="10dp"
+            android:text="---------- HST 13% ----------"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubTotal"
+            tools:layout_editor_absoluteX="8dp"
+            android:textColor="@android:color/black"
+            android:gravity="center_horizontal"
+            />
+
+        <TextView
+            android:id="@+id/hstValueText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/hstHeading"
+            tools:layout_editor_absoluteX="8dp"
+            android:textColor="@android:color/black"
+            android:gravity="center_horizontal"
+            />
+
+        <TextView
+            android:id="@+id/totalHeading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="---------- Total ----------"
+            app:layout_constraintTop_toBottomOf="@+id/hstValueText"
+            tools:layout_editor_absoluteX="8dp"
+            android:textColor="@android:color/black"
+            android:gravity="center_horizontal"
+            />
+
+        <TextView
+            android:id="@+id/totalValueText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/totalHeading"
+            tools:layout_editor_absoluteX="8dp"
+            android:textColor="@android:color/black"
+            android:gravity="center_horizontal"
+            />
+
+
+        <Button
+            android:id="@+id/orderNowButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Place Order"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/rounded_corner"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
