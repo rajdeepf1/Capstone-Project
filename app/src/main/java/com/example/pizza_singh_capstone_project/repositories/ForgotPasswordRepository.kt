@@ -11,8 +11,9 @@ import com.example.pizza_singh_capstone_project.utils.Coroutines
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
+import javax.inject.Inject
 
-class ForgotPasswordRepository {
+class ForgotPasswordRepository @Inject constructor(){
     private val TAG: String? = "ForgotPasswordRepository"
 
     val firestore = FirebaseFirestore.getInstance()

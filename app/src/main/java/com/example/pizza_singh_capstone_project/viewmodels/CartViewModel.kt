@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.pizza_singh_capstone_project.models.CartModel
 import com.example.pizza_singh_capstone_project.repositories.CartRepository
+import com.example.pizza_singh_capstone_project.utils.Coroutines
 
 class CartViewModel:ViewModel() {
     fun insert(context: Context,cartModel:CartModel)
@@ -16,4 +17,15 @@ class CartViewModel:ViewModel() {
     {
         return CartRepository.getAllCartData(context, userId = userId)
     }
+
+    fun deleteAllCartData(context: Context)
+    {
+        CartRepository.deleteAllCartData(context = context)
+    }
+
+    fun deleteCartDataById(context: Context,cartItemId:Int)
+    {
+        CartRepository.deleteCartDataById(context = context,cartItemId= cartItemId)
+    }
+
 }

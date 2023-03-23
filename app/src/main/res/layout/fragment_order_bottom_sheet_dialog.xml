@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.OrderBottomSheetDialogFragment">
+    tools:context=".fragments.OrderBottomSheetDialogFragment"
+    android:id="@+id/bottomSheetFrameLayout"
+    >
 
     <View
         android:layout_width="40dp"
@@ -16,95 +18,128 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="30dp"
-        android:paddingHorizontal="8dp"
         >
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_list"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="350dp"
+            android:layout_marginHorizontal="5dp"
+            android:background="@drawable/ic_pizza_blob"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvSubTotalHeading"
+
+        <ir.beigirad.zigzagview.ZigzagView
+            android:id="@+id/zigzagView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="---------- Sub Total ----------"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rv_list"
-            tools:layout_editor_absoluteX="8dp"
-            android:textColor="@android:color/black"
-            android:gravity="center_horizontal"
-            />
+            app:zigzagBackgroundColor="@color/purple_700"
+            app:zigzagElevation="8dp"
+            app:zigzagHeight="10dp"
+            app:zigzagShadowAlpha="0.9"
+            app:zigzagSides="top">
 
-        <TextView
-            android:id="@+id/tvSubTotal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/tvSubTotalHeading"
-            tools:layout_editor_absoluteX="8dp"
-            android:textColor="@android:color/black"
-            android:gravity="center_horizontal"
-            />
+            <!--Linear layout created-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:gravity="center"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/hstHeading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="---------- HST 13% ----------"
-            app:layout_constraintTop_toBottomOf="@+id/tvSubTotal"
-            tools:layout_editor_absoluteX="8dp"
-            android:textColor="@android:color/black"
-            android:gravity="center_horizontal"
-            />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/hstValueText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/hstHeading"
-            tools:layout_editor_absoluteX="8dp"
-            android:textColor="@android:color/black"
-            android:gravity="center_horizontal"
-            />
+                    <TextView
+                        android:id="@+id/tvSubTotalHeading"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:text="---------- Sub Total ----------"
+                        android:textColor="@android:color/black" />
 
-        <TextView
-            android:id="@+id/totalHeading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="---------- Total ----------"
-            app:layout_constraintTop_toBottomOf="@+id/hstValueText"
-            tools:layout_editor_absoluteX="8dp"
-            android:textColor="@android:color/black"
-            android:gravity="center_horizontal"
-            />
+                    <TextView
+                        android:id="@+id/tvSubTotal"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="0.0"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
 
-        <TextView
-            android:id="@+id/totalValueText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/totalHeading"
-            tools:layout_editor_absoluteX="8dp"
-            android:textColor="@android:color/black"
-            android:gravity="center_horizontal"
-            />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <TextView
+                        android:id="@+id/hstHeading"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:text="---------- HST ----------"
+                        android:textColor="@android:color/black" />
 
-        <Button
-            android:id="@+id/orderNowButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+                    <TextView
+                        android:id="@+id/hstValueText"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="13%"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/totalHeading"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:text="---------- Total ----------"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:id="@+id/totalValueText"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="0.0"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </ir.beigirad.zigzagview.ZigzagView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/placeOrderButton"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/rounded_corner"
             android:text="Place Order"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/rounded_corner"
+            android:layout_marginBottom="10dp"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,13 +17,15 @@ import com.example.pizza_singh_capstone_project.databinding.CustomCartListBindin
 import com.example.pizza_singh_capstone_project.fragments.OrderBottomSheetDialogFragment
 import com.example.pizza_singh_capstone_project.models.CartModel
 import com.example.pizza_singh_capstone_project.utils.Constant
+import com.example.pizza_singh_capstone_project.viewmodels.CartViewModel
 
 
 class CartsListAdapter(
-    private val list: List<CartModel>,
+    private val list: ArrayList<CartModel>,
     private val context: Context,
     private val orderButton: Button,
-    private val progressBar: ProgressBar
+    private val progressBar: ProgressBar,
+    private val cartViewModel: CartViewModel
 ) :
     RecyclerView.Adapter<CartsListAdapter.HoursViewHolder>() {
 
@@ -123,6 +125,12 @@ class CartsListAdapter(
                         )
                     }, 2000)
 
+                }
+
+                binding.imageViewDelete.setOnClickListener{
+                    cartViewModel.deleteCartDataById(context,id!!)
+                    list.remove(list[position])
+                    notifyDataSetChanged()
                 }
 
             }

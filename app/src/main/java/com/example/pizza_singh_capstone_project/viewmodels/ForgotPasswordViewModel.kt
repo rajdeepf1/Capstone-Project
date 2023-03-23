@@ -10,8 +10,11 @@ import com.example.pizza_singh_capstone_project.repositories.ForgotPasswordRepos
 import com.example.pizza_singh_capstone_project.utils.Constant
 import com.example.pizza_singh_capstone_project.utils.Coroutines
 import com.example.pizza_singh_capstone_project.utils.InternetConnectionCheck
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ForgotPasswordViewModel(private val forgotPasswordRepository: ForgotPasswordRepository) :
+@HiltViewModel
+class ForgotPasswordViewModel @Inject constructor(private val forgotPasswordRepository: ForgotPasswordRepository) :
     ViewModel() {
 
     private val TAG: String? = ForgotPasswordViewModel::class.java.name

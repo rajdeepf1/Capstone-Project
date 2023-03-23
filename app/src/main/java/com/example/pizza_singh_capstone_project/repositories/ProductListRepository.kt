@@ -15,12 +15,13 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.tasks.await
 import java.util.logging.Handler
+import javax.inject.Inject
 
-class ProductListRepository(private val category_name: String, private var category_id: String) {
+class ProductListRepository @Inject constructor() {
     private val TAG: String? = "ProductListRepository"
     val firestore = FirebaseFirestore.getInstance()
 
-    suspend fun getProducts(): List<ProductModel> {
+    suspend fun getProducts(category_name: String,category_id: String): List<ProductModel> {
         var list: List<ProductModel>? = ArrayList()
 
         var collectionName: Collections? = null

@@ -11,7 +11,9 @@ import com.example.pizza_singh_capstone_project.R
 import com.example.pizza_singh_capstone_project.databinding.ActivityMainBinding
 import com.example.pizza_singh_capstone_project.models.LoginSignupModel
 import com.example.pizza_singh_capstone_project.utils.SharedPref
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

@@ -31,6 +31,17 @@
                 cardView:layout_constraintStart_toStartOf="parent"
                 cardView:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:id="@+id/imageViewDelete"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/baseline_delete_24"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewPrice"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+
             <TextView
                 android:id="@+id/textViewName"
                 android:layout_width="220dp"
@@ -76,7 +87,7 @@
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/textViewPrice"
                 android:layout_marginHorizontal="10dp"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 >
 
                 <ImageView

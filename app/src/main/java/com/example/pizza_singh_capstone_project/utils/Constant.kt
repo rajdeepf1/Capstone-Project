@@ -13,6 +13,10 @@ object Constant {
     const val ownerId : String = "1234"
     const val sharedPrefUserObjectKey: String = "user-obj-sharedPrefKey"
 
+    val CHANNEL_ID = "channelID"
+    val CHANNEL_NAME = "channelName"
+    val NOTIF_ID = 0
+
     fun isValidEmail(target: CharSequence?): Boolean {
         return !TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches()
     }

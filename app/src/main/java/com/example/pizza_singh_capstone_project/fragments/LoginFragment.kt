@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -15,13 +14,13 @@ import androidx.navigation.Navigation
 import com.example.pizza_singh_capstone_project.R
 import com.example.pizza_singh_capstone_project.activities.OwnerHomeActivity
 import com.example.pizza_singh_capstone_project.databinding.FragmentLoginBinding
-import com.example.pizza_singh_capstone_project.factories.LoginFactory
 import com.example.pizza_singh_capstone_project.interfaces.NetworkResult
 import com.example.pizza_singh_capstone_project.models.LoginSignupModel
-import com.example.pizza_singh_capstone_project.repositories.LoginSignUpRepository
 import com.example.pizza_singh_capstone_project.utils.*
 import com.example.pizza_singh_capstone_project.viewmodels.LoginFragmentViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private val TAG: String? = LoginFragment::class.java.name
@@ -38,8 +37,8 @@ class LoginFragment : Fragment() {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        val loginSignUpRepository = LoginSignUpRepository()
-        val viewModel = ViewModelProvider(this, LoginFactory(loginSignUpRepository)).get(
+        //val loginSignUpRepository = LoginSignUpRepository()
+        val viewModel = ViewModelProvider(this).get(
             LoginFragmentViewModel::class.java
         )
         binding.loginFragmentViewModel = viewModel
@@ -47,10 +46,7 @@ class LoginFragment : Fragment() {
 
         viewModel.userResponse.observe(viewLifecycleOwner, Observer {
             Log.d(TAG, "onCreateView: ${it.data}")
-//            if (it.data == null){
-//                binding.progressBar.hide()
-//                return@Observer
-//            }
+
             when (it) {
                 is NetworkResult.Loading -> {
                     binding.progressBar.show()

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pizza_singh_capstone_project.adapters.CartsListAdapter
 import com.example.pizza_singh_capstone_project.databinding.FragmentCartBinding
+import com.example.pizza_singh_capstone_project.models.CartModel
 import com.example.pizza_singh_capstone_project.models.LoginSignupModel
 import com.example.pizza_singh_capstone_project.utils.SharedPref
 import com.example.pizza_singh_capstone_project.viewmodels.CartViewModel
@@ -50,12 +51,27 @@ class CartFragment : Fragment() {
             binding.textViewNoDataFoundLoginFirst.visibility = View.INVISIBLE
             cartViewModel.getAllCartData(requireContext(), userId = userId)
                 .observe(viewLifecycleOwner, Observer {
-                    val adapter: CartsListAdapter =
-                        CartsListAdapter(it, requireContext(), binding.orderNowButton,binding.progressBar)
-                    binding.rvList.adapter = adapter
+                    if (it.size>0) {
+                        binding.textViewNoDataFoundLoginFirst.visibility = View.GONE
+                        binding.orderNowButton.visibility= View.VISIBLE
+                        val adapter: CartsListAdapter =
+                            CartsListAdapter(
+                                it as ArrayList<CartModel>,
+                                requireContext(),
+                                binding.orderNowButton,
+                                binding.progressBar,
+                                cartViewModel
+                            )
+                        binding.rvList.adapter = adapter
+                    }else{
+                        binding.textViewNoDataFoundLoginFirst.visibility = View.VISIBLE
+                        binding.textViewNoDataFoundLoginFirst.text="No items in the cart"
+                        binding.orderNowButton.visibility= View.GONE
+                    }
                 })
         } else {
             binding.textViewNoDataFoundLoginFirst.visibility = View.VISIBLE
+            binding.orderNowButton.visibility= View.GONE
         }
 
         return view

@@ -8,7 +8,9 @@ import androidx.navigation.ui.NavigationUI
 import com.example.pizza_singh_capstone_project.R
 import com.example.pizza_singh_capstone_project.databinding.ActivityMainBinding
 import com.example.pizza_singh_capstone_project.databinding.ActivityOwnerHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class OwnerHomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOwnerHomeBinding
     private val TAG: String = "OwnerHomeActivity"

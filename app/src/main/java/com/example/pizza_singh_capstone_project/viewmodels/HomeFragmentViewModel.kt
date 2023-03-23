@@ -7,8 +7,11 @@ import com.example.pizza_singh_capstone_project.models.BannersModel
 import com.example.pizza_singh_capstone_project.models.CategoriesModel
 import com.example.pizza_singh_capstone_project.repositories.HomeRepository
 import com.example.pizza_singh_capstone_project.utils.Coroutines
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class HomeFragmentViewModel(val homeRepository: HomeRepository) : ViewModel() {
+@HiltViewModel
+class HomeFragmentViewModel @Inject constructor(private val homeRepository: HomeRepository) : ViewModel() {
 
     var homeBanners: MutableLiveData<NetworkResult<ArrayList<BannersModel>>> = MutableLiveData()
     var categoriesList: MutableLiveData<NetworkResult<ArrayList<CategoriesModel>>> =

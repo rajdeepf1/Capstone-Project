@@ -16,4 +16,10 @@ interface CartDAO {
     @Query("SELECT * FROM cart where userId = :userId ORDER BY id ASC")
     fun getAllCartData(userId:Long): LiveData<List<CartModel>>
 
+    @Query("DELETE FROM cart")
+    suspend fun deleteAllCartData()
+
+    @Query("DELETE FROM cart WHERE id = :cartItemId")
+    suspend fun deleteCartDataById(cartItemId: Int)
+
 }

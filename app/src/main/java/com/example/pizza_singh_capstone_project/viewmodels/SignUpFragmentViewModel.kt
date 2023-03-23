@@ -14,8 +14,11 @@ import com.example.pizza_singh_capstone_project.utils.Constant
 import com.example.pizza_singh_capstone_project.utils.Coroutines
 import com.example.pizza_singh_capstone_project.utils.InternetConnectionCheck
 import com.google.android.material.radiobutton.MaterialRadioButton
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class SignUpFragmentViewModel(val loginSignUpRepository: LoginSignUpRepository) : ViewModel() {
+@HiltViewModel
+class SignUpFragmentViewModel @Inject constructor(val loginSignUpRepository: LoginSignUpRepository) : ViewModel() {
 
     private val TAG: String? = SignUpFragmentViewModel::class.java.name
 

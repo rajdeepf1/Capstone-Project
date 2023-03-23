@@ -13,13 +13,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.pizza_singh_capstone_project.activities.ProductListActivity
 import com.example.pizza_singh_capstone_project.adapters.HomeGridAdapter
 import com.example.pizza_singh_capstone_project.databinding.FragmentHomeBinding
-import com.example.pizza_singh_capstone_project.factories.HomeFactory
 import com.example.pizza_singh_capstone_project.interfaces.NetworkResult
 import com.example.pizza_singh_capstone_project.repositories.HomeRepository
 import com.example.pizza_singh_capstone_project.utils.*
 import com.example.pizza_singh_capstone_project.viewmodels.HomeFragmentViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private val TAG: String? = HomeFragment::class.java.name
@@ -43,8 +44,8 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        val homeRepository = HomeRepository()
-        val viewModel = ViewModelProvider(this, HomeFactory(homeRepository)).get(
+        //val homeRepository = HomeRepository()
+        val viewModel = ViewModelProvider(this).get(
             HomeFragmentViewModel::class.java
         )
         binding.homeFragmentViewModel = viewModel
@@ -100,7 +101,7 @@ class HomeFragment : Fragment() {
                     val obj = it.data!!
                     Log.d(TAG, "onCreateViewCategoriesList: ${obj}")
 
-                    val homeGridAdapter = HomeGridAdapter(requireContext(),obj)
+                    val homeGridAdapter = HomeGridAdapter(requireActivity(),obj)
                     binding.gridView.adapter = homeGridAdapter
                     binding.gridView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
                         startActivity(Intent(requireContext(),ProductListActivity::class.java)
