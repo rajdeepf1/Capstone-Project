@@ -6,6 +6,9 @@
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -46,3 +49,7 @@
     </application>
 
 </manifest>
+
+<!--
+https://medium.com/mindorks/send-device-to-device-push-notification-using-firebase-cloud-messaging-without-using-external-769476c79ffd
+-->

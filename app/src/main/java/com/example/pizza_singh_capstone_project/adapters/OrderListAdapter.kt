@@ -153,7 +153,7 @@ class OrderListAdapter(
                             val intent = Intent(context, MainActivity::class.java)
                             val pendingIntent = TaskStackBuilder.create(context).run {
                                 addNextIntentWithParentStack(intent)
-                                getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
+                                getPendingIntent(0, PendingIntent.FLAG_MUTABLE)
                             }
                             val notifManger = NotificationManagerCompat.from(context)
                             val notif = NotificationCompat.Builder(context, CHANNEL_ID)

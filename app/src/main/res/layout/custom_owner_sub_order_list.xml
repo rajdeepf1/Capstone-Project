@@ -12,24 +12,40 @@
 
     </data>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        cardView:cardCornerRadius="8dp"
-        cardView:cardElevation="8dp">
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:id="@+id/cardView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="4dp"-->
+<!--        cardView:cardCornerRadius="8dp"-->
+<!--        cardView:cardElevation="8dp">-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:elevation="10dp"
+                app:cardCornerRadius="8dp"
+                cardView:layout_constraintStart_toStartOf="parent"
+                cardView:layout_constraintTop_toTopOf="parent">
 
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:scaleType="fitXY" />
+            </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/textViewOrderId"
+                android:id="@+id/textViewName"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/veg"
                 android:drawablePadding="4dp"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
@@ -39,7 +55,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cardView1"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="@tools:sample/full_names" />
 
@@ -57,45 +73,32 @@
                 android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/textViewOrderId"
-                app:layout_constraintStart_toEndOf="@+id/textViewOrderId"
-                app:layout_constraintTop_toTopOf="@+id/textViewOrderId"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewName"
+                app:layout_constraintStart_toEndOf="@+id/textViewName"
+                app:layout_constraintTop_toTopOf="@+id/textViewName"
                 tools:text="12.13"
                 android:layout_marginStart="10dp"
                 />
 
-            <ImageView
-                android:id="@+id/imageViewAccept"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="20dp"
-                android:src="@drawable/green_tick"
-                app:layout_constraintBottom_toBottomOf="@+id/textViewPrice"
-                app:layout_constraintStart_toEndOf="@+id/textViewPrice"
-                app:layout_constraintTop_toTopOf="@+id/textViewPrice" />
-
-            <ImageView
-                android:id="@+id/imageViewReject"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/reject"
-                app:layout_constraintBottom_toBottomOf="@+id/imageViewAccept"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.673"
-                app:layout_constraintStart_toEndOf="@+id/imageViewAccept"
-                app:layout_constraintTop_toTopOf="@+id/imageViewAccept" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+            <TextView
+                android:id="@+id/textViewDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-smallcaps"
+                android:lines="3"
+                android:padding="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewOrderId" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/cardView1"
+                app:layout_constraintTop_toBottomOf="@+id/textViewName"
+                tools:text="@tools:sample/lorem/random" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    </androidx.cardview.widget.CardView>
+<!--    </androidx.cardview.widget.CardView>-->
 
 </layout>
