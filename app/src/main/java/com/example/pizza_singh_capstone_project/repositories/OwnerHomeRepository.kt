@@ -26,32 +26,30 @@ class OwnerHomeRepository @Inject constructor() {
         firestore.clearPersistence()
         CoroutineScope(Dispatchers.Main).async {
             firestore.collection("Orders").addSnapshotListener { snapshot, e ->
-                Log.d(TAG, "getOrders: called")
                 if (e != null) {
                     Log.w(TAG, "listen:error", e)
                     return@addSnapshotListener
                 }
-                Log.d(TAG, "getOrders: called1")
                 list.clear()
-                snapshot!!.documents.map {
-                    val orderId = it.data!!.getValue("orderId") as Long
-                    val orderStatus = it.data!!.getValue("orderStatus") as ORDER_STATUS?
-                    val userId = it.data!!.getValue("userId") as Long
-                    val totalAmount = it.data!!.getValue("totalAmount") as String
-                    val orderList: ArrayList<OwnerCartModel> =
-                        it.data!!.getValue("orderList") as ArrayList<OwnerCartModel>
-                    //Log.d(TAG, "getOrders: ${orderList}")
-                    val data =
-                        OwnerOrderModel(orderId, orderStatus, orderList, userId, totalAmount)
-                    list.add(data)
+                try {
+                    val document = snapshot!!.toObjects(OwnerOrderModel::class.java)
+
+                    for (i in document) {
+                        val orderHistoryModel: OwnerOrderModel = OwnerOrderModel()
+                        orderHistoryModel.orderId = i.orderId
+                        orderHistoryModel.orderStatus = i.orderStatus
+                        orderHistoryModel.userId = i.userId
+                        orderHistoryModel.totalAmount = i.totalAmount
+                        orderHistoryModel.orderList = i.orderList!!.toMutableList()
+                        list.add(orderHistoryModel)
+                    }
+                } catch (e: Exception) {
+                    Log.d(TAG, "getOrdersHistory: ${e.message}")
                 }
             }
-            Log.d(TAG, "getOrders: called3")
             delay(2000)
-            Log.d(TAG, "getOrders: called4")
         }.await()
-        Log.d(TAG, "getOrders: ${list.size}")
-        return list!!
+        return list
     }
 
 

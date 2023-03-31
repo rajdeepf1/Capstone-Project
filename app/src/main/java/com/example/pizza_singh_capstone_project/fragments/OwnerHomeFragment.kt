@@ -23,6 +23,7 @@ import com.example.pizza_singh_capstone_project.databinding.FragmentHomeBinding
 import com.example.pizza_singh_capstone_project.databinding.FragmentOwnerHomeBinding
 import com.example.pizza_singh_capstone_project.interfaces.NetworkResult
 import com.example.pizza_singh_capstone_project.models.ORDER_STATUS
+import com.example.pizza_singh_capstone_project.models.OrderHistoryModel
 import com.example.pizza_singh_capstone_project.models.OwnerCartModel
 import com.example.pizza_singh_capstone_project.models.OwnerOrderModel
 import com.example.pizza_singh_capstone_project.utils.Constant
@@ -111,24 +112,25 @@ class OwnerHomeFragment : Fragment() {
         firestore.clearPersistence()
         CoroutineScope(Dispatchers.Main).async {
             firestore.collection("Orders").addSnapshotListener { snapshot, e ->
-                Log.d(TAG, "getOrders: called")
                 if (e != null) {
                     Log.w(TAG, "listen:error", e)
                     return@addSnapshotListener
                 }
-                Log.d(TAG, "getOrders: called1")
                 list.clear()
-                snapshot!!.documents.map {
-                    val orderId = it.data!!.getValue("orderId") as Long
-                    val orderStatus = it.data!!.getValue("orderStatus") as ORDER_STATUS?
-                    val userId = it.data!!.getValue("userId") as Long
-                    val totalAmount = it.data!!.getValue("totalAmount") as String
-                    val orderList: ArrayList<OwnerCartModel> =
-                        it.data!!.getValue("orderList") as ArrayList<OwnerCartModel>
-                    val data =
-                        OwnerOrderModel(orderId, orderStatus, orderList, userId, totalAmount)
-                    list.add(data)
-                    Log.d(TAG, "getOrders: called2")
+                try {
+                    val document = snapshot!!.toObjects(OwnerOrderModel::class.java)
+
+                    for (i in document) {
+                        val orderHistoryModel: OwnerOrderModel = OwnerOrderModel()
+                        orderHistoryModel.orderId = i.orderId
+                        orderHistoryModel.orderStatus = i.orderStatus
+                        orderHistoryModel.userId = i.userId
+                        orderHistoryModel.totalAmount = i.totalAmount
+                        orderHistoryModel.orderList = i.orderList!!.toMutableList()
+                        list.add(orderHistoryModel)
+                    }
+                } catch (e: Exception) {
+                    Log.d(TAG, "getOrdersHistory: ${e.message}")
                 }
                 // create  layoutManager
                 val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(requireContext())
@@ -137,7 +139,7 @@ class OwnerHomeFragment : Fragment() {
                 binding.recyclerView.setLayoutManager(layoutManager)
                 binding.progressBar.hide()
 
-                if (list!= null && list.size>0){
+                if (list.size>0){
                     val adapter =
                         OwnerOrderListAdapter(list, requireContext())
                     binding.recyclerView.adapter = adapter
@@ -147,7 +149,6 @@ class OwnerHomeFragment : Fragment() {
                 }
 
             }
-            Log.d(TAG, "getOrders: called3")
 
         }.await()
     }

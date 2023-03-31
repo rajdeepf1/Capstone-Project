@@ -6,23 +6,11 @@
 
     <data>
 
-        <variable
-            name="signUpFragmentViewModel"
-            type="com.example.pizza_singh_capstone_project.viewmodels.SignUpFragmentViewModel" />
-
     </data>
-
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:id="@+id/cardView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="4dp"-->
-<!--        cardView:cardCornerRadius="8dp"-->
-<!--        cardView:cardElevation="8dp">-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView1"
@@ -73,11 +61,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/textViewName"
-                app:layout_constraintStart_toEndOf="@+id/textViewName"
-                app:layout_constraintTop_toTopOf="@+id/textViewName"
-                tools:text="12.13"
-                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewName"
+                tools:text="12.13" />
+
+            <TextView
+                android:id="@+id/textViewQyt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewPrice"
+                app:layout_constraintStart_toEndOf="@+id/textViewPrice"
+                app:layout_constraintTop_toTopOf="@+id/textViewPrice"
+                tools:text="1"
+                android:layout_marginStart="20dp"
                 />
 
             <TextView
@@ -92,13 +98,12 @@
                 android:textSize="12sp"
                 android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/cardView1"
-                app:layout_constraintTop_toBottomOf="@+id/textViewName"
+                app:layout_constraintTop_toBottomOf="@+id/textViewPrice"
                 tools:text="@tools:sample/lorem/random" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    </androidx.cardview.widget.CardView>-->
 
 </layout>

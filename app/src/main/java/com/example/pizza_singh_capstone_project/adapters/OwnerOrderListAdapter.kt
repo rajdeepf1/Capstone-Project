@@ -47,7 +47,7 @@ class OwnerOrderListAdapter(
 
                 binding.cardView.animation =
                     AnimationUtils.loadAnimation(holder.itemView.context, R.anim.anim)
-                binding.textViewOrderId.setText(orderId.toString())
+                binding.textViewOrderId.setText("OrderId: "+orderId.toString())
 
                 binding.imageViewAccept.setOnClickListener {
                     Coroutines.main {
@@ -96,17 +96,20 @@ class OwnerOrderListAdapter(
                 // pass it to rvLists layoutManager
                 binding.recyclerView.setLayoutManager(layoutManager)
 
-                binding.recyclerView.apply {
-                    adapter =
-                        OwnerCartSubListAdapter(orderList as ArrayList<OwnerCartModel>, context)
-                    setRecycledViewPool(viewPool)
+                try {
+                    binding.recyclerView.apply {
+                        adapter =
+                            OwnerCartSubListAdapter(orderList as ArrayList<OwnerCartModel>, context)
+                        setRecycledViewPool(viewPool)
+                    }
+                }catch (e:Exception){
+                    Log.d(TAG, "onBindViewHolder: ${e.message}")
                 }
             }
         }
     }
 
     suspend fun insertData(data: OwnerOrderModel): Boolean {
-        Log.d(TAG, "insertData: here")
         var resp = false
         firestore.collection("OrderHistory").add(data)
             .addOnCompleteListener(OnCompleteListener {
@@ -118,14 +121,12 @@ class OwnerOrderListAdapter(
     }
 
     suspend fun removeOrderData(data: OwnerOrderModel): Boolean {
-        Log.d(TAG, "insertData: here")
-        var resp = false
+        val resp = false
         firestore.collection("Orders")
             .whereEqualTo("orderId",data.orderId)
             .get()
             .addOnCompleteListener {
                 if (it.isSuccessful ) {
-                    //firestore.collection("Orders").document(it.result.documents.get(0).data?.keys.toString()).delete()
                     it.result.documents.map {
                         Log.d(TAG, "removeOrderData: ${it.id}")
                         firestore.collection("Orders").document(it.id).delete()

@@ -22,9 +22,8 @@ class OwnerHomeFragmentViewModel @Inject constructor(private val ownerHomeReposi
         ordersList.value = NetworkResult.Loading()
         Coroutines.main {
             val data = ownerHomeRepository.getOrders()
-            Log.d(TAG, "getOrders: ${data.toString()}")
-            if (data != null && data!!.size >0){
-                ordersList.value = NetworkResult.Success(data!!)
+            if (data.size >0){
+                ordersList.value = NetworkResult.Success(data)
                 NetworkResult.Success(ordersList.value)
             }else{
                 ordersList.value = NetworkResult.Error("No Data Found!")

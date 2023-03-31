@@ -13,9 +13,16 @@
         tools:layout="@layout/fragment_owner_home" />
 
     <fragment
+        android:id="@+id/ownerHistoryFragment"
+        android:name="com.example.pizza_singh_capstone_project.fragments.OwnerHistoryFragment"
+        android:label="fragment_second"
+        tools:layout="@layout/fragment_owner_history" />
+
+
+    <fragment
         android:id="@+id/ownerAccountFragment"
         android:name="com.example.pizza_singh_capstone_project.fragments.OwnerAccountFragment"
-        android:label="fragment_second"
+        android:label="fragment_third"
         tools:layout="@layout/fragment_owner_account" />
 
 

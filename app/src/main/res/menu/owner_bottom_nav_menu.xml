@@ -5,7 +5,7 @@
         android:icon="@drawable/baseline_home_24"
         android:title="@string/home" />
     <item
-        android:id="@+id/ownerOrderHistoryFragment"
+        android:id="@+id/ownerHistoryFragment"
         android:icon="@drawable/order_now"
         android:title="Orders History" />
     <item
