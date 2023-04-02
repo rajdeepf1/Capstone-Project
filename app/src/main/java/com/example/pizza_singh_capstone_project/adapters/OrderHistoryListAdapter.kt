@@ -43,6 +43,8 @@ class OrderHistoryListAdapter(
                     AnimationUtils.loadAnimation(holder.itemView.context, R.anim.anim)
                 binding.textViewOrderId.setText(orderId.toString())
 
+
+
                  if (orderStatus!!.equals("accept")){
                      binding.textViewStatus.text = "Accepted"
                      binding.textViewStatus.setTextColor(Color.parseColor("#4CAF50"))

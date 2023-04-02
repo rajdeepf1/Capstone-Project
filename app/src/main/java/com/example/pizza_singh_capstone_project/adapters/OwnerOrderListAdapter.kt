@@ -49,6 +49,8 @@ class OwnerOrderListAdapter(
                     AnimationUtils.loadAnimation(holder.itemView.context, R.anim.anim)
                 binding.textViewOrderId.setText("OrderId: "+orderId.toString())
 
+                binding.textViewPrice.text = "Total "+totalAmount+" $"
+
                 binding.imageViewAccept.setOnClickListener {
                     Coroutines.main {
                         val resp: Boolean = insertData(

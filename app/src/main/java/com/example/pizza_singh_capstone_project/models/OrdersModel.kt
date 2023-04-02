@@ -6,9 +6,9 @@ enum class ORDER_STATUS {
 }
 
 data class OrdersModel(
-    var orderId: Long,
+    var orderId: Long = 0,
     var orderStatus: ORDER_STATUS? = null,
-    var orderList: List<CartModel>,
-    var userId: Long,
-    var totalAmount: String
+    var orderList: List<CartModel>? = null,
+    var userId: Long = 0,
+    var totalAmount: String = ""
 )

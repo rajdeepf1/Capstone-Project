@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.Navigation
 import com.example.pizza_singh_capstone_project.R
 import com.example.pizza_singh_capstone_project.activities.MainActivity
@@ -57,6 +58,31 @@ class OwnerAccountFragment : Fragment() {
 
         } catch (e: Exception) {
             Log.d(TAG, "onCreateView: ${e.message}")
+        }
+
+        binding.cardView2.setOnClickListener{
+            val aboutBottomSheetDialogFragment = AboutBottomSheetDialogFragment()
+            aboutBottomSheetDialogFragment.show(
+                (context as FragmentActivity).supportFragmentManager,
+                "aboutBottomSheetDialogFragment"
+            )
+
+        }
+
+        binding.cardView3.setOnClickListener{
+            val feedbackBottomSheetDialogFragment = FeedbackBottomSheetDialogFragment()
+            feedbackBottomSheetDialogFragment.show(
+                (context as FragmentActivity).supportFragmentManager,
+                "feedbackBottomSheetDialogFragment"
+            )
+        }
+
+        binding.cardView4.setOnClickListener{
+            val contactUsBottomSheetDialogFragment = ContactUsBottomSheetDialogFragment()
+            contactUsBottomSheetDialogFragment.show(
+                (context as FragmentActivity).supportFragmentManager,
+                "contactUsBottomSheetDialogFragment"
+            )
         }
 
         return view

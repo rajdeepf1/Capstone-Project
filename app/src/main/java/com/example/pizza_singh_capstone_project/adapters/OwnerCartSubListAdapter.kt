@@ -43,7 +43,7 @@ class OwnerCartSubListAdapter(
 
                 Log.d(TAG, "onBindViewHolder: ${list.toString()}")
 
-                //Log.d(TAG, "onBindViewHolder Checkkkkkk: ${model.isVeg}")
+                Log.d(TAG, "onBindViewHolder Checkkkkkk: ${model.isVeg}")
                 if (model.isVeg) {
                     binding.textViewName.setCompoundDrawablesWithIntrinsicBounds(
                         R.drawable.veg,

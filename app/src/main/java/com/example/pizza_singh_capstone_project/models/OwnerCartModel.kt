@@ -5,7 +5,7 @@ data class OwnerCartModel(
     val productId: String ="",
     val productPrice: String ="",
     val productImage: String ="",
-    val isVeg: Boolean = false,
+    val isVeg: Boolean = false ,
     val userId: String = "",
     val extraThings: String = "",
     var qyt: Int= 0

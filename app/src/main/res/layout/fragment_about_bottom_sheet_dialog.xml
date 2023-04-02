@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.AboutBottomSheetDialogFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            >
+
+            <View
+                android:layout_width="40dp"
+                android:layout_height="8dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/rounded_corner" />
+
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animationView"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="19705-chef.json"
+                app:lottie_loop="true" />
+
+            <TextView
+                android:id="@+id/textViewAboutHeading"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-smallcaps"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:text="@string/about_app"
+                android:paddingVertical="5dp"
+                android:layout_below="@+id/animationView"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewAboutHeading"
+                android:text="@string/app_description"
+
+                />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</FrameLayout>

@@ -21,7 +21,7 @@ import kotlin.properties.Delegates
 
 
 class ProductDetailsActivity : AppCompatActivity() {
-    private val TAG: String? = "ProductListActivity"
+    private val TAG: String = "ProductDetailsActivity"
     private lateinit var binding: ActivityProductDetailsBinding
     private lateinit var productName: String
     private lateinit var productId: String

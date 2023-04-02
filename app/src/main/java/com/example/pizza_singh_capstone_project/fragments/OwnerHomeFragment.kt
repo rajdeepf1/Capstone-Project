@@ -119,7 +119,7 @@ class OwnerHomeFragment : Fragment() {
                 list.clear()
                 try {
                     val document = snapshot!!.toObjects(OwnerOrderModel::class.java)
-
+                    Log.d(TAG, "getOrders: ${document.toString()}")
                     for (i in document) {
                         val orderHistoryModel: OwnerOrderModel = OwnerOrderModel()
                         orderHistoryModel.orderId = i.orderId
