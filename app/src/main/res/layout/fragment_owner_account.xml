@@ -252,6 +252,7 @@
         android:layout_marginBottom="10dp"
         android:text="Logout"
         android:layout_gravity="bottom"
+        android:background="@drawable/rounded_corner"
         />
 
 </FrameLayout>

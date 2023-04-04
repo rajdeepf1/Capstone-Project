@@ -1,51 +1,42 @@
-package com.example.pizza_singh_capstone_project.fragments
+package com.example.pizza_singh_capstone_project.activities
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pizza_singh_capstone_project.R
+import com.example.pizza_singh_capstone_project.adapters.FavoriteListAdapter
 import com.example.pizza_singh_capstone_project.adapters.OrderHistoryListAdapter
-import com.example.pizza_singh_capstone_project.databinding.FragmentOwnerAccountBinding
-import com.example.pizza_singh_capstone_project.databinding.FragmentOwnerHistoryBinding
+import com.example.pizza_singh_capstone_project.databinding.ActivityMyFavoriteBinding
+import com.example.pizza_singh_capstone_project.databinding.ActivityOrderHistoryBinding
 import com.example.pizza_singh_capstone_project.interfaces.NetworkResult
 import com.example.pizza_singh_capstone_project.utils.Constant
 import com.example.pizza_singh_capstone_project.utils.hide
+import com.example.pizza_singh_capstone_project.viewmodels.FavoriteViewModel
 import com.example.pizza_singh_capstone_project.viewmodels.OrderHistoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class OwnerHistoryFragment : Fragment() {
-
-    private var _binding: FragmentOwnerHistoryBinding? = null
-
-    private val binding get() = _binding!!
-
-    private val TAG: String = "OwnerHistoryFragment"
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        _binding = FragmentOwnerHistoryBinding.inflate(inflater, container, false)
+class MyFavoriteActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMyFavoriteBinding
+    private val TAG: String = "MyFavoriteActivity"
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMyFavoriteBinding.inflate(layoutInflater)
         val view = binding.root
-
+        setContentView(view)
+        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
         val viewModel = ViewModelProvider(this).get(
-            OrderHistoryViewModel::class.java
+            FavoriteViewModel::class.java
         )
-        binding.ownerOrderHistoryFragmentViewModel = viewModel
+        binding.favoriteViewModel = viewModel
         binding.lifecycleOwner = this
 
-        viewModel.getOrders()
+        viewModel.getFavorites()
 
-        viewModel.ordersList.observe(viewLifecycleOwner, Observer {
+        viewModel.favList.observe(this, Observer {
 
             when (it) {
                 is NetworkResult.Loading -> {
@@ -54,17 +45,17 @@ class OwnerHistoryFragment : Fragment() {
 
                 is NetworkResult.Success -> {
                     val obj = it.data!!
-                    Log.d(TAG, "onCreateViewOrdersList: ${obj}")
+                    Log.d(TAG, "onCreateViewFavList: ${obj}")
 
                     // create  layoutManager
                     val layoutManager: RecyclerView.LayoutManager =
-                        LinearLayoutManager(requireContext())
+                        LinearLayoutManager(applicationContext)
 
                     // pass it to rvLists layoutManager
                     binding.recyclerView.setLayoutManager(layoutManager)
 
-                    val adapter: OrderHistoryListAdapter =
-                        OrderHistoryListAdapter(obj, requireContext())
+                    val adapter: FavoriteListAdapter =
+                        FavoriteListAdapter(obj, applicationContext)
                     binding.recyclerView.adapter = adapter
 
                     binding.progressBar.hide()
@@ -74,7 +65,7 @@ class OwnerHistoryFragment : Fragment() {
 
                 is NetworkResult.Error -> {
                     binding.progressBar.hide()
-                    Constant.showToast(requireContext(), it.message.toString())
+                    Constant.showToast(applicationContext, it.message.toString())
                 }
                 else -> {
                     binding.progressBar.hide()
@@ -84,7 +75,9 @@ class OwnerHistoryFragment : Fragment() {
 
         })
 
-        return view
     }
-
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
 }

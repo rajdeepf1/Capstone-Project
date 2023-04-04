@@ -21,9 +21,7 @@ import com.bumptech.glide.Glide
 import com.example.pizza_singh_capstone_project.R
 import com.example.pizza_singh_capstone_project.activities.MainActivity
 import com.example.pizza_singh_capstone_project.databinding.CustomOrderListBinding
-import com.example.pizza_singh_capstone_project.models.CartModel
-import com.example.pizza_singh_capstone_project.models.LoginSignupModel
-import com.example.pizza_singh_capstone_project.models.OrdersModel
+import com.example.pizza_singh_capstone_project.models.*
 import com.example.pizza_singh_capstone_project.utils.Constant
 import com.example.pizza_singh_capstone_project.utils.Constant.CHANNEL_ID
 import com.example.pizza_singh_capstone_project.utils.Constant.CHANNEL_NAME
@@ -31,6 +29,7 @@ import com.example.pizza_singh_capstone_project.utils.Constant.NOTIF_ID
 import com.example.pizza_singh_capstone_project.utils.Coroutines
 import com.example.pizza_singh_capstone_project.utils.SharedPref
 import com.example.pizza_singh_capstone_project.viewmodels.CartViewModel
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.firestore.FirebaseFirestore
@@ -116,7 +115,6 @@ class OrderListAdapter(
                         val response: Boolean = insertData(ordersModel)
                         if (response) {
 
-
                             val mDialog = MaterialDialog.Builder(context as Activity)
                                 .setAnimation(R.raw.checkmark)
                                 .setTitle("Order Placed!")
@@ -127,9 +125,7 @@ class OrderListAdapter(
                                 ) { dialogInterface, which ->
                                     // Delete Operation
                                     Coroutines.main {
-                                        val delete = cartViewModel.deleteAllCartData(context)
-                                        Log.d(TAG, "onBindViewHolder: ${delete}")
-                                        Log.d(TAG, "onBindViewHolder: deleted")
+                                        cartViewModel.deleteAllCartData(context)
                                         dialogInterface.dismiss()
                                         dialog.dismiss()
                                         context.startActivity(
@@ -139,12 +135,36 @@ class OrderListAdapter(
                                     }
 
                                 }
-//                                .setNegativeButton(
-//                                    "Cancel", com.google.android.material.R.drawable.ic_m3_chip_close
-//                                ) { dialogInterface, which -> dialogInterface.dismiss() }
-                                .build()
+                                .setNegativeButton(
+                                    "Add to favorite"
+                                ) { dialogInterface, which ->
+                                    Coroutines.main {
+                                        val resp = insertFavoriteData(
+                                            FavoriteModel(
+                                                Date().time,
+                                                loginSignupModel.userId,
+                                                list
+                                            )
+                                        )
+                                        if (resp) {
+                                            Constant.showToast(
+                                                context,
+                                                "Your order has been added to favorite!"
+                                            )
+                                            cartViewModel.deleteAllCartData(context)
+                                            dialogInterface.dismiss()
+                                            dialog.dismiss()
+                                            context.startActivity(
+                                                Intent(context, MainActivity::class.java)
+                                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                                            )
+                                        } else {
+                                            Constant.showToast(context, "Something went wrong!")
+                                        }
 
-                            // Show Dialog
+                                    }
+                                }
+                                .build()
 
                             // Show Dialog
                             mDialog.show()
@@ -240,6 +260,17 @@ class OrderListAdapter(
             val manager = context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
             manager.createNotificationChannel(channel)
         }
+    }
+
+    suspend fun insertFavoriteData(data: FavoriteModel): Boolean {
+        var resp = false
+        firestore.collection("Favorites").add(data)
+            .addOnCompleteListener(OnCompleteListener {
+                resp = it.isSuccessful
+            }).addOnFailureListener(OnFailureListener {
+                resp = false
+            }).await()
+        return resp
     }
 
     inner class HoursViewHolder(val binding: CustomOrderListBinding) :

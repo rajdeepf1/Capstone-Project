@@ -1,5 +1,9 @@
 package com.example.pizza_singh_capstone_project.fragments
 
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -7,10 +11,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.Navigation
 import com.example.pizza_singh_capstone_project.R
+import com.example.pizza_singh_capstone_project.activities.MyFavoriteActivity
+import com.example.pizza_singh_capstone_project.activities.OrderHistoryActivity
 import com.example.pizza_singh_capstone_project.databinding.FragmentAccountBinding
 import com.example.pizza_singh_capstone_project.models.LoginSignupModel
+import com.example.pizza_singh_capstone_project.utils.Constant
 import com.example.pizza_singh_capstone_project.utils.SharedPref
 import com.example.pizza_singh_capstone_project.utils.hide
 import com.example.pizza_singh_capstone_project.utils.show
@@ -79,7 +88,74 @@ class AccountFragment : Fragment() {
 
         }
 
+        binding.cardView2.setOnClickListener{
+            startActivity(Intent(requireContext(),OrderHistoryActivity::class.java))
+        }
+
+        binding.cardView3.setOnClickListener{
+            startActivity(Intent(requireContext(),MyFavoriteActivity::class.java))
+        }
+
+        val aboutBottomSheetDialogFragment = AboutBottomSheetDialogFragment()
+
+        binding.cardView4.setOnClickListener {
+            aboutBottomSheetDialogFragment.show(
+                (context as FragmentActivity).supportFragmentManager,
+                "aboutBottomSheetDialogFragment"
+            )
+
+        }
+
+        val feedbackBottomSheetDialogFragment = FeedbackBottomSheetDialogFragment()
+        binding.cardView5.setOnClickListener {
+            feedbackBottomSheetDialogFragment.show(
+                (context as FragmentActivity).supportFragmentManager,
+                "feedbackBottomSheetDialogFragment"
+            )
+        }
+
+        binding.cardView6.setOnClickListener {
+            // cheacking permission
+            if (ActivityCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.CALL_PHONE
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    requireActivity(), arrayOf(android.Manifest.permission.CALL_PHONE),
+                    Constant.REQUEST_PHONE_CALL
+                )
+            } else {
+                makeCall()
+            }
+        }
+
         return view
+    }
+
+    private fun makeCall() {
+        val numberText = Constant.PHONE_NUMBER
+        val intent = Intent(Intent.ACTION_CALL)
+        intent.setData(Uri.parse("tel:$numberText"))
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.CALL_PHONE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            Constant.showToast(requireContext(), "Permission denied")
+            return
+        }
+        startActivity(intent)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == Constant.REQUEST_PHONE_CALL) {
+            makeCall()
+        }
     }
 
 }

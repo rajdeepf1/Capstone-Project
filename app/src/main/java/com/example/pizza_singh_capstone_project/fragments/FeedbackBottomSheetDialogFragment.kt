@@ -7,14 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.lifecycle.ViewModelProvider
 import com.example.pizza_singh_capstone_project.R
 import com.example.pizza_singh_capstone_project.databinding.FragmentAboutBottomSheetDialogBinding
 import com.example.pizza_singh_capstone_project.databinding.FragmentFeedbackBottomSheetDialogBinding
+import com.example.pizza_singh_capstone_project.viewmodels.FeedbackViewModel
+import com.example.pizza_singh_capstone_project.viewmodels.SignUpFragmentViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class FeedbackBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     lateinit var dialog: BottomSheetDialog
@@ -47,6 +51,12 @@ class FeedbackBottomSheetDialogFragment : BottomSheetDialogFragment() {
         // Inflate the layout for this fragment
         _binding = FragmentFeedbackBottomSheetDialogBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        //val loginSignUpRepository: LoginSignUpRepository = LoginSignUpRepository()
+        val viewModel = ViewModelProvider(this).get(FeedbackViewModel::class.java)
+        binding.feedbackViewModel = viewModel
+        binding.lifecycleOwner = this
+
         return view
     }
 

@@ -12,6 +12,9 @@ object Constant {
     const val setTimeOutDuration : Long = 4000
     const val ownerId : String = "1234"
     const val sharedPrefUserObjectKey: String = "user-obj-sharedPrefKey"
+    const val REQUEST_PHONE_CALL= 1
+    const val PHONE_NUMBER = "+16478937103"
+
 
     val CHANNEL_ID = "channelID"
     val CHANNEL_NAME = "channelName"
