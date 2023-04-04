@@ -9,10 +9,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pizza_singh_capstone_project.R
 import com.example.pizza_singh_capstone_project.adapters.CartsListAdapter
 import com.example.pizza_singh_capstone_project.databinding.FragmentCartBinding
-import com.example.pizza_singh_capstone_project.databinding.FragmentHomeBinding
+import com.example.pizza_singh_capstone_project.models.CartModel
+import com.example.pizza_singh_capstone_project.models.LoginSignupModel
+import com.example.pizza_singh_capstone_project.utils.SharedPref
 import com.example.pizza_singh_capstone_project.viewmodels.CartViewModel
 
 
@@ -44,12 +45,37 @@ class CartFragment : Fragment() {
         // pass it to rvLists layoutManager
         binding.rvList.setLayoutManager(layoutManager)
 
-        cartViewModel.getAllCartData(requireContext()).observe(viewLifecycleOwner, Observer {
-            val adapter: CartsListAdapter = CartsListAdapter(it,requireContext())
-            binding.rvList.adapter = adapter
-        })
+        val loginSignupModel: LoginSignupModel = SharedPref.getUserObject(requireContext())
+        val userId: Long = loginSignupModel.userId
+        if (userId != 0L) {
+            binding.textViewNoDataFoundLoginFirst.visibility = View.INVISIBLE
+            cartViewModel.getAllCartData(requireContext(), userId = userId)
+                .observe(viewLifecycleOwner, Observer {
+                    if (it.size>0) {
+                        binding.textViewNoDataFoundLoginFirst.visibility = View.GONE
+                        binding.orderNowButton.visibility= View.VISIBLE
+                        val adapter: CartsListAdapter =
+                            CartsListAdapter(
+                                it as ArrayList<CartModel>,
+                                requireContext(),
+                                binding.orderNowButton,
+                                binding.progressBar,
+                                cartViewModel
+                            )
+                        binding.rvList.adapter = adapter
+                    }else{
+                        binding.textViewNoDataFoundLoginFirst.visibility = View.VISIBLE
+                        binding.textViewNoDataFoundLoginFirst.text="No items in the cart"
+                        binding.orderNowButton.visibility= View.GONE
+                    }
+                })
+        } else {
+            binding.textViewNoDataFoundLoginFirst.visibility = View.VISIBLE
+            binding.orderNowButton.visibility= View.GONE
+        }
 
         return view
     }
+
 
 }

@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pizza_singh_capstone_project.R
 import com.example.pizza_singh_capstone_project.adapters.ProductListAdapter
 import com.example.pizza_singh_capstone_project.databinding.ActivityProductListBinding
-import com.example.pizza_singh_capstone_project.factories.ProductListFactory
 import com.example.pizza_singh_capstone_project.interfaces.NetworkResult
 import com.example.pizza_singh_capstone_project.models.ProductModel
 import com.example.pizza_singh_capstone_project.repositories.ProductListRepository
@@ -21,7 +20,10 @@ import com.example.pizza_singh_capstone_project.utils.Constant
 import com.example.pizza_singh_capstone_project.utils.hide
 import com.example.pizza_singh_capstone_project.utils.show
 import com.example.pizza_singh_capstone_project.viewmodels.ProductListViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ProductListActivity : AppCompatActivity() {
     private val TAG: String? = "ProductListActivity"
     private lateinit var binding: ActivityProductListBinding
@@ -40,14 +42,14 @@ class ProductListActivity : AppCompatActivity() {
         val category_id: String= getIntent().getStringExtra("category_id").toString()
         Log.d(TAG, "onCreate: ${category_name}")
 
-        val productListRepository = ProductListRepository(category_name,category_id)
-        val viewModel = ViewModelProvider(this, ProductListFactory(productListRepository)).get(
+        //val productListRepository = ProductListRepository(category_name,category_id)
+        val viewModel = ViewModelProvider(this).get(
             ProductListViewModel::class.java
         )
         binding.productListViewModel = viewModel
         binding.lifecycleOwner = this
 
-        viewModel.getProductList(context = applicationContext)
+        viewModel.getProductList(context = applicationContext,category_name,category_id)
 
         viewModel.productList.observe(this, Observer {
             when (it) {

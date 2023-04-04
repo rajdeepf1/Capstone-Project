@@ -12,7 +12,8 @@ data class CartModel(
     val productImage: String,
     val isVeg: Boolean,
     val userId: String,
-    val extraThings: String
+    val extraThings: String,
+    var qyt: Int
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null

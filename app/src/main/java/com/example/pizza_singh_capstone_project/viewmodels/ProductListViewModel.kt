@@ -11,18 +11,21 @@ import com.example.pizza_singh_capstone_project.repositories.ProductListReposito
 import com.example.pizza_singh_capstone_project.utils.Constant
 import com.example.pizza_singh_capstone_project.utils.Coroutines
 import com.example.pizza_singh_capstone_project.utils.InternetConnectionCheck
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ProductListViewModel(private val productListRepository: ProductListRepository):ViewModel() {
+@HiltViewModel
+class ProductListViewModel @Inject constructor(private val productListRepository: ProductListRepository):ViewModel() {
 
     private val TAG: String = "ProductListViewModel"
 
     var productList: MutableLiveData<NetworkResult<List<ProductModel>>> = MutableLiveData()
 
-    fun getProductList(context: Context){
+    fun getProductList(context: Context, category_name: String,category_id: String){
         if (InternetConnectionCheck.isOnline(context)){
             Coroutines.main {
                 productList.value = NetworkResult.Loading()
-                val response = productListRepository.getProducts()
+                val response = productListRepository.getProducts(category_name,category_id)
                 if (!response.isEmpty()){
                     productList.value = NetworkResult.Success(response)
                 }else{

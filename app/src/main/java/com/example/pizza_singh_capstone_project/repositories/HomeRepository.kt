@@ -6,8 +6,9 @@ import com.example.pizza_singh_capstone_project.models.BannersModel
 import com.example.pizza_singh_capstone_project.models.CategoriesModel
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
+import javax.inject.Inject
 
-class HomeRepository {
+class HomeRepository @Inject constructor() {
 
     private val TAG: String? = "HomeRepository"
     val firestore = FirebaseFirestore.getInstance()
