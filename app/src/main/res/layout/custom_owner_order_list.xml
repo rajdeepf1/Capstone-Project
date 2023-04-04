@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:cardView="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="signUpFragmentViewModel"
+            type="com.example.pizza_singh_capstone_project.viewmodels.SignUpFragmentViewModel" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        cardView:cardCornerRadius="8dp"
+        cardView:cardElevation="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <TextView
+                android:id="@+id/textViewOrderId"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:lines="2"
+                android:padding="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@tools:sample/full_names" />
+
+            <TextView
+                android:id="@+id/textViewPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewOrderId"
+                tools:text="12.13" />
+
+            <ImageView
+                android:id="@+id/imageViewAccept"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/green_tick"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewReject"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewReject"
+                app:layout_constraintTop_toTopOf="@+id/imageViewReject"
+                android:layout_margin="10dp"
+                />
+
+            <ImageView
+                android:id="@+id/imageViewReject"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/reject"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_margin="10dp"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewPrice" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

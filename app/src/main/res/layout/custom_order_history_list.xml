@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:cardView="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        cardView:cardCornerRadius="8dp"
+        cardView:cardElevation="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <TextView
+                android:id="@+id/textViewOrderId"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:lines="2"
+                android:padding="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@tools:sample/full_names" />
+
+            <TextView
+                android:id="@+id/textViewPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewOrderId"
+                app:layout_constraintStart_toEndOf="@+id/textViewOrderId"
+                app:layout_constraintTop_toTopOf="@+id/textViewOrderId"
+                tools:text="12.13"
+                android:layout_marginStart="10dp"
+                />
+
+            <TextView
+                android:id="@+id/textViewStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Accepted"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewPrice"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewPrice"
+                app:layout_constraintTop_toTopOf="@+id/textViewPrice" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewOrderId" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

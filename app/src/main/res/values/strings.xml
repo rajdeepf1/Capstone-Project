@@ -11,4 +11,7 @@
     <string name="address">Address</string>
     <string name="mobile_number">Mobile Number</string>
     <string name="name">Name</string>
+    <string name="about_app">About Us:</string>
+    <string name="app_description"><i>Singh`s Pizza is a regional pizza maker located in the in London, ON. Singh`s Pizza strives to serve healthy, speciality pizzas and side dishes. We offer a wide spectrum of competitive pricing. We target customers like commuters and workers who lack the time or ability to prepare a meal.</i> \n \n \n \u25A0 <b>Developer Information:</b> \n \n <b>Name:</b> Rajdeep Singh \n \n <b>Student Id:</b> 1115120 \n \n <b>Name:</b> Raman Singh \n \n <b>Student Id:</b> 1114562 \n \n <b>Name:</b> Sohail Ahmed \n \n <b>Student Id:</b> 1088669 \n \n <b>Name:</b> Rajan Gaire \n \n <b>Student Id:</b> 1111128 \n \n <b>Assignment:</b> INFO-6134-(02)-23W - Team (Group 77 (CS)) Capstone Project </string>
 </resources>
+

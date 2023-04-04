@@ -51,6 +51,32 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
+                <LinearLayout
+                    android:id="@+id/llIcons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/onCardClick"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    >
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/veg"
+                        android:layout_marginEnd="5dp"
+                        />
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/nonveg"
+                        android:layout_marginStart="5dp"
+                        />
+
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/linearLayout"
@@ -59,7 +85,7 @@
                     android:layout_marginTop="20dp"
                     android:elevation="2dp"
                     android:orientation="horizontal"
-                    app:layout_constraintTop_toBottomOf="@+id/onCardClick">
+                    app:layout_constraintTop_toBottomOf="@+id/llIcons">
 
                     <TextView
                         android:id="@+id/titleText"
@@ -130,41 +156,45 @@
                         android:id="@+id/radioPanTossed"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text="  Pan Tossed - $2.10"
+                        android:text="Pan Tossed - $2.10"
                         android:textSize="16sp"
                         android:drawableLeft="@drawable/veg"
                         android:buttonTint="@color/purple_500"
                         android:checked="true"
+                        android:drawablePadding="4dp"
                         />
 
                     <RadioButton
                         android:id="@+id/radioCheeseBlast"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text="   Cheese Blast - $2.50"
+                        android:text="Cheese Blast - $2.50"
                         android:textSize="16sp"
                         android:drawableLeft="@drawable/veg"
                         android:buttonTint="@color/purple_500"
+                        android:drawablePadding="4dp"
                         />
 
                     <RadioButton
                         android:id="@+id/radioThinCrustCheeseBlast"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text="   Thin Crust Cheese Blast - $1.80"
+                        android:text="Thin Crust Cheese Blast - $1.80"
                         android:textSize="16sp"
                         android:drawableLeft="@drawable/veg"
                         android:buttonTint="@color/purple_500"
+                        android:drawablePadding="4dp"
                         />
 
                     <RadioButton
                         android:id="@+id/radioThinCrust"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text="   Thin Crust - $1.49"
+                        android:text="Thin Crust - $1.49"
                         android:textSize="16sp"
                         android:drawableLeft="@drawable/veg"
                         android:buttonTint="@color/purple_500"
+                        android:drawablePadding="4dp"
                         />
 
                 </RadioGroup>
@@ -196,6 +226,7 @@
                         android:text="Coke"
                         android:drawableLeft="@drawable/veg"
                         android:buttonTint="@color/purple_500"
+                        android:drawablePadding="4dp"
                         />
 
                     <CheckBox
@@ -205,6 +236,7 @@
                         android:text="Choco Lava Cake"
                         android:drawableLeft="@drawable/veg"
                         android:buttonTint="@color/purple_500"
+                        android:drawablePadding="4dp"
                         />
 
                     <CheckBox
@@ -212,8 +244,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Chocolate Overload Brownie"
-                        android:drawableLeft="@drawable/nonveg"
+                        android:drawableLeft="@drawable/veg"
                         android:buttonTint="@color/purple_500"
+                        android:drawablePadding="4dp"
                         />
 
 
@@ -246,6 +279,7 @@
                         android:text="Paneer Cubes"
                         android:drawableLeft="@drawable/veg"
                         android:buttonTint="@color/purple_500"
+                        android:drawablePadding="4dp"
                         />
 
                     <CheckBox
@@ -255,6 +289,7 @@
                         android:text="Mushrooms"
                         android:drawableLeft="@drawable/veg"
                         android:buttonTint="@color/purple_500"
+                        android:drawablePadding="4dp"
                         />
 
                     <CheckBox
@@ -264,6 +299,7 @@
                         android:text="Black Olives"
                         android:drawableLeft="@drawable/veg"
                         android:buttonTint="@color/purple_500"
+                        android:drawablePadding="4dp"
                         />
 
                     <CheckBox
@@ -273,6 +309,7 @@
                         android:text="Spicy Jalapenos"
                         android:drawableLeft="@drawable/veg"
                         android:buttonTint="@color/purple_500"
+                        android:drawablePadding="4dp"
                         />
 
                     <CheckBox
@@ -282,6 +319,7 @@
                         android:text="Red Paprika"
                         android:drawableLeft="@drawable/veg"
                         android:buttonTint="@color/purple_500"
+                        android:drawablePadding="4dp"
                         />
 
                     <CheckBox
@@ -291,18 +329,94 @@
                         android:text="Golden Corn"
                         android:drawableLeft="@drawable/veg"
                         android:buttonTint="@color/purple_500"
+                        android:drawablePadding="4dp"
+                        />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_NonVegToppings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_VegToppings"
+                    android:orientation="vertical"
+                    android:paddingBottom="100dp"
+                    >
+
+                    <CheckBox
+                        android:id="@+id/lambCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lamb"
+                        android:drawableLeft="@drawable/nonveg"
+                        android:buttonTint="@color/purple_500"
+                        android:drawablePadding="4dp"
+                        />
+
+                    <CheckBox
+                        android:id="@+id/classicPepperoniCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Classic Pepperoni"
+                        android:drawableLeft="@drawable/nonveg"
+                        android:buttonTint="@color/purple_500"
+                        android:drawablePadding="4dp"
+                        />
+
+                    <CheckBox
+                        android:id="@+id/periPeriChickenCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Peri Peri Chicken"
+                        android:drawableLeft="@drawable/nonveg"
+                        android:buttonTint="@color/purple_500"
+                        android:drawablePadding="4dp"
+                        />
+
+                    <CheckBox
+                        android:id="@+id/cowboyChickenCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cowboy Chicken"
+                        android:drawableLeft="@drawable/nonveg"
+                        android:buttonTint="@color/purple_500"
+                        android:drawablePadding="4dp"
+                        />
+
+                    <CheckBox
+                        android:id="@+id/chickenSmokeyJoeCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chicken Smokey Joe"
+                        android:drawableLeft="@drawable/nonveg"
+                        android:buttonTint="@color/purple_500"
+                        android:drawablePadding="4dp"
+                        />
+
+                    <CheckBox
+                        android:id="@+id/doubleTroubleChickenCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Double Trouble Chicken"
+                        android:drawableLeft="@drawable/nonveg"
+                        android:buttonTint="@color/purple_500"
+                        android:drawablePadding="4dp"
                         />
 
 
                 </LinearLayout>
 
+
                 <Button
                     android:id="@+id/addToCartButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/ll_VegToppings"
                     android:text="Add To Cart"
-                    android:layout_marginVertical="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@drawable/rounded_corner"
                     />
 
 

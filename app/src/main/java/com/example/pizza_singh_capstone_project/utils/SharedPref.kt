@@ -1,6 +1,7 @@
 package com.example.pizza_singh_capstone_project.utils
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pizza_singh_capstone_project.models.LoginSignupModel
@@ -50,6 +51,14 @@ class SharedPref {
             }else{
                 return LoginSignupModel()
             }
+        }
+
+        fun clearSharedPrefObject(context: Context){
+            val sharedPreferences = context.getSharedPreferences(
+                Constant.sharedPreferences,
+                AppCompatActivity.MODE_PRIVATE
+            )
+            sharedPreferences.edit().clear().apply()
         }
 
     }

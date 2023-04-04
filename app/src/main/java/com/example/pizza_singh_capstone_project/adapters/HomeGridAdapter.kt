@@ -14,19 +14,16 @@ import com.example.pizza_singh_capstone_project.R
 import com.example.pizza_singh_capstone_project.activities.ProductListActivity
 import com.example.pizza_singh_capstone_project.models.CategoriesModel
 
-class HomeGridAdapter (context: Context, list: List<CategoriesModel>) : BaseAdapter() {
+class HomeGridAdapter (var context: Context, var list: List<CategoriesModel>) : BaseAdapter() {
 
     //Passing Values to Local Variables
 
-    var context = context
-    var list = list
-
 
     //Auto Generated Method
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
 
         var myView = convertView
-        var holder: ViewHolder
+        val holder: ViewHolder
 
         if (myView == null) {
 
@@ -34,22 +31,22 @@ class HomeGridAdapter (context: Context, list: List<CategoriesModel>) : BaseAdap
             myView = mInflater.inflate(R.layout.grid_item, parent, false)
             holder = ViewHolder()
 
-            holder.mImageView = myView!!.findViewById<ImageView>(R.id.imageView) as ImageView
-            holder.mTextView = myView!!.findViewById<TextView>(R.id.textView) as TextView
-            myView.setTag(holder)
+            holder.mImageView = myView.findViewById<ImageView>(R.id.imageView) as ImageView
+            holder.mTextView = myView.findViewById<TextView>(R.id.textView) as TextView
+            myView.tag = holder
         } else {
             holder = myView.getTag() as ViewHolder
         }
 
-        val position = list.get(position)
+        val index = list.get(position)
 
         Glide
             .with(context)
-            .load(position.categoryImage)
+            .load(index.categoryImage)
             .centerCrop()
             .into(holder.mImageView!!)
 
-        holder.mTextView!!.setText(position.categoryName)
+        holder.mTextView!!.setText(index.categoryName)
 //        holder.rlGridItem?.setOnClickListener({
 //            context.startActivity(Intent(context,ProductListActivity::class.java))
 //        })

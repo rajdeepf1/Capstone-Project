@@ -13,8 +13,10 @@ import com.example.pizza_singh_capstone_project.models.LoginSignupModel
 import com.example.pizza_singh_capstone_project.repositories.LoginSignUpRepository
 import com.example.pizza_singh_capstone_project.utils.Constant
 import com.example.pizza_singh_capstone_project.utils.Coroutines
-
-class LoginFragmentViewModel(val loginSignUpRepository: LoginSignUpRepository) : ViewModel() {
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+@HiltViewModel
+class LoginFragmentViewModel @Inject constructor(val loginSignUpRepository: LoginSignUpRepository) : ViewModel() {
 
     private val TAG: String? = LoginFragmentViewModel::class.java.name
 
@@ -26,7 +28,12 @@ class LoginFragmentViewModel(val loginSignUpRepository: LoginSignUpRepository) :
             Constant.showToast(view.context, "Please enter the valid email-id!")
         } else if (passwordTextField.value.isNullOrBlank()) {
             Constant.showToast(view.context, "Please fill the password!")
-        } else {
+        }else if(!Constant.isValidPassword(passwordTextField.value.toString())){
+            Constant.showToast(
+                view.context,
+                "Password must contain minimum 8 characters at least 1 Alphabet, 1 Number and 1 Special Character"
+            )
+        }else {
             Coroutines.main {
 //                userResponse.value = NetworkResult.Loading()
 //                val data = loginSignUpRepository.getUserData(
@@ -59,5 +66,9 @@ class LoginFragmentViewModel(val loginSignUpRepository: LoginSignUpRepository) :
 
     fun onSignUpButtonClick(view: View): Unit {
         Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_signUpFragment)
+    }
+
+    fun onForgotTextClicked(view: View): Unit {
+        Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_forgotFragment)
     }
 }

@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotFragment"
+            app:destination="@id/forgotFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -43,6 +46,14 @@
         android:name="com.example.pizza_singh_capstone_project.fragments.CartFragment"
         android:label="fragment_sixth"
         tools:layout="@layout/fragment_cart" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/forgotFragment"
+        android:name="com.example.pizza_singh_capstone_project.fragments.ForgotPasswordFragment"
+        android:label="fragment_seventh"
+        tools:layout="@layout/fragment_forgot_password" >
+
     </fragment>
 
 </navigation>

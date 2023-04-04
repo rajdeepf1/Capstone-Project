@@ -114,12 +114,15 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <TextView
+                        android:id="@+id/textViewForgotPassword"
                         style="@style/viewParent"
                         android:layout_gravity="end"
                         android:layout_marginTop="10dp"
                         android:text="Forgot Password?"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/newsMoreTextSize" />
+                        android:textSize="@dimen/newsMoreTextSize"
+                        android:onClick="@{loginFragmentViewModel::onForgotTextClicked}"
+                        />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:layout_width="200dp"
@@ -141,7 +144,7 @@
                         android:onClick="@{loginFragmentViewModel::onSignUpButtonClick}"
                         android:text="New user? Register Now"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/themeColor"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 

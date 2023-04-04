@@ -1,16 +1,17 @@
 package com.example.pizza_singh_capstone_project.activities
 
+
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.View
 import android.widget.RadioButton
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.example.pizza_singh_capstone_project.R
 import com.example.pizza_singh_capstone_project.databinding.ActivityProductDetailsBinding
-import com.example.pizza_singh_capstone_project.databinding.ActivityProductListBinding
 import com.example.pizza_singh_capstone_project.models.CartModel
 import com.example.pizza_singh_capstone_project.models.LoginSignupModel
 import com.example.pizza_singh_capstone_project.utils.Constant
@@ -18,8 +19,9 @@ import com.example.pizza_singh_capstone_project.utils.SharedPref
 import com.example.pizza_singh_capstone_project.viewmodels.CartViewModel
 import kotlin.properties.Delegates
 
+
 class ProductDetailsActivity : AppCompatActivity() {
-    private val TAG: String? = "ProductListActivity"
+    private val TAG: String = "ProductDetailsActivity"
     private lateinit var binding: ActivityProductDetailsBinding
     private lateinit var productName: String
     private lateinit var productId: String
@@ -35,7 +37,7 @@ class ProductDetailsActivity : AppCompatActivity() {
         binding = ActivityProductDetailsBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
 
         productName = intent.getStringExtra("productName").toString()
         productId = intent.getStringExtra("productId").toString()
@@ -57,6 +59,11 @@ class ProductDetailsActivity : AppCompatActivity() {
                 0,
                 0
             )
+
+            binding.llVegToppings.visibility = View.VISIBLE
+            binding.llNonVegToppings.visibility = View.GONE
+            binding.vegToppings.text = "Veg Toppings"
+
         } else {
             binding.titleText.setCompoundDrawablesWithIntrinsicBounds(
                 R.drawable.nonveg,
@@ -64,6 +71,9 @@ class ProductDetailsActivity : AppCompatActivity() {
                 0,
                 0
             )
+            binding.llVegToppings.visibility = View.GONE
+            binding.llNonVegToppings.visibility = View.VISIBLE
+            binding.vegToppings.text = "Non-Veg Toppings"
         }
         binding.priceText.text = "$ ${productPrice}"
         binding.descriptionText.text = productDescription[0]
@@ -96,7 +106,7 @@ class ProductDetailsActivity : AppCompatActivity() {
             val loginSignupModel: LoginSignupModel = SharedPref.getUserObject(applicationContext)
 
             if (loginSignupModel.userId != 0L) {
-
+                // veg categories
                 if (binding.cokeCheckBox.isChecked) {
                     extraThings.add(binding.cokeCheckBox.text.toString())
                 }
@@ -124,6 +134,27 @@ class ProductDetailsActivity : AppCompatActivity() {
                 if (binding.goldenCornCheckBox.isChecked) {
                     extraThings.add(binding.goldenCornCheckBox.text.toString())
                 }
+                // non-veg categories
+                if (binding.lambCheckBox.isChecked) {
+                    extraThings.add(binding.lambCheckBox.text.toString())
+                }
+                if (binding.classicPepperoniCheckBox.isChecked) {
+                    extraThings.add(binding.classicPepperoniCheckBox.text.toString())
+                }
+                if (binding.periPeriChickenCheckBox.isChecked) {
+                    extraThings.add(binding.periPeriChickenCheckBox.text.toString())
+                }
+                if (binding.cowboyChickenCheckBox.isChecked) {
+                    extraThings.add(binding.cowboyChickenCheckBox.text.toString())
+                }
+                if (binding.chickenSmokeyJoeCheckBox.isChecked) {
+                    extraThings.add(binding.chickenSmokeyJoeCheckBox.text.toString())
+                }
+                if (binding.doubleTroubleChickenCheckBox.isChecked) {
+                    extraThings.add(binding.doubleTroubleChickenCheckBox.text.toString())
+                }
+
+
 
                 val commaSeperatedString = extraThings.joinToString { it -> "\'${it}\'" }
 
@@ -138,11 +169,13 @@ class ProductDetailsActivity : AppCompatActivity() {
                         productImage,
                         isVeg,
                         loginSignupModel.userId.toString(),
-                        commaSeperatedString
+                        commaSeperatedString,
+                        1
                     )
                 )
 
                 Constant.showToast(applicationContext,"Items Added To Cart!")
+                startActivity(Intent(this,MainActivity::class.java).putExtra("isCommingFromCartScreen",true))
 
 
             }else{
@@ -157,4 +190,6 @@ class ProductDetailsActivity : AppCompatActivity() {
         onBackPressed()
         return true
     }
+
+
 }
