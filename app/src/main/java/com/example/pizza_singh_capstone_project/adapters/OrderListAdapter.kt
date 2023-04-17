@@ -165,7 +165,6 @@ class OrderListAdapter(
                                     }
                                 }
                                 .build()
-
                             // Show Dialog
                             mDialog.show()
 
@@ -177,9 +176,9 @@ class OrderListAdapter(
                             }
                             val notifManger = NotificationManagerCompat.from(context)
                             val notif = NotificationCompat.Builder(context, CHANNEL_ID)
-                                .setContentTitle("Sample Title")
-                                .setContentText("This is sample body notif")
-                                .setSmallIcon(R.mipmap.ic_app_icon_pizza_singh)
+                                .setContentTitle("Pizza Singh")
+                                .setContentText("Your order has been placed")
+                                .setSmallIcon(R.drawable.pizza_icon)
                                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                                 .setContentIntent(pendingIntent)
                                 .build()
