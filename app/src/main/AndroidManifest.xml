@@ -19,6 +19,9 @@
         android:theme="@style/Theme.PizzaSinghCapstoneProject"
         tools:targetApi="31">
         <activity
+            android:name=".activities.AccountsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.MyFavoriteActivity"
             android:exported="false" />
         <activity

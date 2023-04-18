@@ -103,7 +103,7 @@ class CartsListAdapter(
                                 }"
                             )
                         } else {
-                            Constant.showToast(context, "You atleast have one item in the cart")
+                            Constant.showToast(context, "You at least have one item in the cart")
                         }
                     }
 

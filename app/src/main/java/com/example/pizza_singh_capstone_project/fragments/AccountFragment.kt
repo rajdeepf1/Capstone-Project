@@ -15,6 +15,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.Navigation
 import com.example.pizza_singh_capstone_project.R
+import com.example.pizza_singh_capstone_project.activities.AccountsActivity
 import com.example.pizza_singh_capstone_project.activities.MyFavoriteActivity
 import com.example.pizza_singh_capstone_project.activities.OrderHistoryActivity
 import com.example.pizza_singh_capstone_project.databinding.FragmentAccountBinding
@@ -86,6 +87,10 @@ class AccountFragment : Fragment() {
                 Log.d(TAG, "onCreateView: ${e.message}")
             }
 
+        }
+
+        binding.cardView1.setOnClickListener{
+            startActivity(Intent(requireContext(),AccountsActivity::class.java))
         }
 
         binding.cardView2.setOnClickListener{
