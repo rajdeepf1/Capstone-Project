@@ -14,8 +14,9 @@ import com.example.pizza_singh_capstone_project.activities.ProductListActivity
 import com.example.pizza_singh_capstone_project.adapters.HomeGridAdapter
 import com.example.pizza_singh_capstone_project.databinding.FragmentHomeBinding
 import com.example.pizza_singh_capstone_project.interfaces.NetworkResult
-import com.example.pizza_singh_capstone_project.repositories.HomeRepository
-import com.example.pizza_singh_capstone_project.utils.*
+import com.example.pizza_singh_capstone_project.utils.Constant
+import com.example.pizza_singh_capstone_project.utils.hide
+import com.example.pizza_singh_capstone_project.utils.show
 import com.example.pizza_singh_capstone_project.viewmodels.HomeFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
