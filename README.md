@@ -5,9 +5,6 @@ Singh's Pizza is a regional pizza maker located in the in London, ON. Singh's Pi
 # Team (Group 77 (CS))
 
 - Rajdeep Singh
-- Raman Singh
-- Rajan Gaire
-- Sohail Ahmed
 
 # Features
 
